@@ -62,3 +62,26 @@ Calendar类是一个抽象类，在实际使用时实现特定的子类的对象
 |    Calendar.SECOND    |               秒               |
 | Calendar.DAY_OF_WEEK  |             星期几             |
 
+## BigInteger
+
+在Java中，由CPU原生提供的整型最大范围是64位`long`型整数。使用`long`型整数可以直接通过CPU指令进行计算，速度非常快。
+
+如果我们使用的整数范围超过了`long`型怎么办？这个时候，就只能用软件来模拟一个大整数。`java.math.BigInteger`就是用来表示任意大小的整数。`BigInteger`内部用一个`int[]`数组来模拟一个非常大的整数。
+
+对`BigInteger`做运算的时候，只能使用实例方法。
+
+和`long`型整数运算比，`BigInteger`不会有范围限制，但缺点是速度比较慢。
+
+## BigDecimal
+
+`BigDecimal`可以表示一个任意大小且精度完全准确的浮点数。
+
+`BigDecimal`用`scale()`表示小数位数。
+
+通过`BigDecimal`的`stripTrailingZeros()`方法，可以将一个`BigDecimal`格式化为一个相等的，但去掉了末尾0的`BigDecimal`。
+
+对`BigDecimal`做加、减、乘时，精度不会丢失，但是做除法时，存在无法除尽的情况，这时，就必须指定精度以及如何进行截断。
+
+比较两个`BigDecimal`的值是否相等时，要特别注意，使用`equals()`方法不但要求两个`BigDecimal`的值相等，还要求它们的`scale()`相等。
+
+必须使用`compareTo()`方法来比较，它根据两个值的大小分别返回负数、正数和`0`，分别表示小于、大于和等于。
