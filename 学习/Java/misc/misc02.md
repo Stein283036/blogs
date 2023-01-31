@@ -194,3 +194,15 @@ String s = "a" + "b"复制ErrorOK!
 
 编译器会进行常量折叠(因为两个都是编译期常量，编译期可知)，直接变成 String s = "ab"。
 
+scope=compile的情况（默认scope),也就是说这个项目在编译，测试，运行阶段都需要这个artifact(模块)对应的jar包在classpath中。
+
+对于scope=provided的情况，则可以认为这个provided是目标容器已经provide这个artifact。换句话说，它只影响到编译，测试阶段。在编译测试阶段，我们需要这个artifact对应的jar包在classpath中。
+
+snapshot快照，alpha内部测试，beta公测，release稳定，GA正式发布。
+
+方法区是**逻辑概念**，而永久代、元空间都是方法区的实现。JDK1.8中取消了永久代，区而代之使用了元空间来实现方法区。
+
+在JDK1.8中，把JDK 7中永久代还剩余的内容（主要是类型信息）全部移到元空间中。注意这里的剩余内容：即字符串常量池，静态常量，在JDK1.8中，并不属于元空间。
+在JDK1.8中，使用元空间代替永久代来实现方法区，但是方法区并没有改变，变动的只是方法区中内容的物理存放位置。正如上面所说，类型信息（元数据信息）等其他信息被移动到了元空间中；但是运行时常量池和字符串常量池被移动到了堆中。
+
+![img](D:\2023年\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTg2NjcxNw==,size_16,color_FFFFFF,t_70)
