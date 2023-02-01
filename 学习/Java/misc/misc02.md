@@ -272,3 +272,25 @@ String s = new String("a") + new String("b");
 JVM 总是动态加载 class，可以在运行期根据条件来控制加载 class。
 
 setAccessible(true)可能会失败。如果 JVM 运行期存在 SecurityManager，那么它会根据规则进行检查，有可能阻止 setAccessible(true)。例如，某个 SecurityManager 可能不允许对 java 和 javax 开头的 package 的类调用 setAccessible(true)，这样可以保证 JVM 核心库的安全。
+![img](D:\2023年\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTg2NjcxNw==,size_16,color_FFFFFF,t_70)
+
+When the method finishes execution, its corresponding stack frame is flushed, the flow goes back to the calling method, and space becomes available for the next method.
+
+Stack Memory in Java is used for static memory allocation and the execution of a thread.
+
+To run an application in an optimal way, JVM divides memory into stack and heap memory.
+
+Java language specification doesn't allow usage of primitive types in the parametrized types (generics),  in the Java collections or the Reflection API.
+
+Surprisingly, arrays of the primitive types long and double consume more memory than their wrapper classes Long and Double.
+We can see either that single-element arrays of primitive types are almost always more expensive (except for long and double) than the corresponding reference type.
+
+It turns out that a single instance of a reference type on this JVM occupies 128 bits except for Long and Double which occupy 192 bits:
+Boolean – 128 bits
+Byte – 128 bits
+Short, Character – 128 bits
+Integer, Float – 128 bits
+Long, Double – 192 bits
+We can see that a single variable of Boolean type occupies as much space as 128 primitive ones, while one Integer variable occupies as much space as four int ones.
+
+To get an object's internal structure, we may use the Java Object Layout tool (see our another tutorial on how to get the size of an object).
