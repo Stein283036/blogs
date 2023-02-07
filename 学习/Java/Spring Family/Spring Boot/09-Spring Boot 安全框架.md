@@ -1,7 +1,5 @@
 # 09-Spring Boot 安全框架
 
-
-
 ## Spring Boot 安全框架 Spring Security
 
 在 Java 生态中，目前有 [Spring Security](https://spring.io/projects/spring-security) 和 [Apache Shiro](https://shiro.apache.org/) 两个安全框架，可以完成认证和授权的功能。

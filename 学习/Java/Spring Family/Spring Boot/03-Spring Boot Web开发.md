@@ -1,7 +1,5 @@
 # 03-Spring Boot Web开发
 
-
-
 ## Lombok
 
 [Lombok](https://github.com/rzwitserloot/lombok) 是一个 Java 工具，通过使用其定义的注解，自动生成常见的冗余代码，提升开发效率。简化POJO的定义，比如简化setter和getter方法，简化构造方法，简化equals和hashCode方法，简化toString方法。
@@ -18,11 +16,7 @@ Lombok 还提供了 [`@CommonsLog`](https://github.com/rzwitserloot/lombok/blob/
 
 ![@Slf4j 示例](https://static.iocoder.cn/images/Spring-Boot/2019-02-04/41.png)
 
-
-
 ## 数据校验
-
-
 
 ## 参考文章
 

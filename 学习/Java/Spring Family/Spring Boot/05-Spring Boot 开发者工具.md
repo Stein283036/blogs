@@ -13,8 +13,6 @@ Spring Boot 通过使用两个类加载器来提供了重启技术。
 
 当应用重启时，**restart** 类加载器将被丢弃，并重新创建一个新的。这种方式意味着应用重启比**冷启动**要快得多，因为省去 **base** 类加载器的处理步骤，并且可以直接使用。
 
-
-
 ## 参考文章
 
 - [芋道 Spring Boot 热部署入门](https://www.iocoder.cn/Spring-Boot/hot-swap/)

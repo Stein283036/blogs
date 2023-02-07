@@ -1,7 +1,5 @@
 # 08-Spring Boot 缓存
 
-
-
 ## Spring Boot Redis
 
 <img src="https://static.iocoder.cn/images/Redis/2019_09_28/01.png" alt="Spring Data Redis 调用" style="zoom:50%;" />
@@ -13,8 +11,6 @@
 在 `spring-boot-starter-data-redis` 项目 2.X 中，默认使用 Lettuce 作为 Java Redis 工具库。
 
 考虑到自己项目中，使用 Jedis 为主，并且问了几个朋友，都是使用 Jedis ，并且有吐槽 Lettuce 坑多多，所以个人推荐的话，生产中还是使用 Jedis ，稳定第一。也因此，本节我们是 Spring Data Redis + Jedis 的组合。
-
-
 
 ## 参考文章
 

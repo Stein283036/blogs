@@ -1,10 +1,6 @@
 # 04-Spring Boot 接口管理
 
-
-
 ## Swagger
-
-
 
 ## Spring Boot API 接口调试 IDEA HTTP Client
 
@@ -32,8 +28,6 @@ IDEA HTTP Client 是 IDEA 提供的 HTTP API **测试**插件，默认**内置**
 
 - 通过创建 `http-client.env.json` 配置文件，定义**通用**变量。例如说，url 地址、port 端口等等。
 - 通过创建 `http-client.private.env.json` 配置文件，定义**敏感**变量。例如说，username/password 账号密码、token 访问令牌等等。
-
-
 
 ## 参考文章
 
