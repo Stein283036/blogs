@@ -15,7 +15,7 @@ Java 的平台无关性是建立在 Java 虚拟机的平台有关性基础之上
 
 ![pass-by-reference-vs-pass-by-value-animation](http://www.hollischuang.com/wp-content/uploads/2020/04/pass-by-reference-vs-pass-by-value-animation.gif)
 
-这里我们来举一个形象的例子。再来深入理解一下传值调用和传引用调用：
+这里我们来举一个形象的例子。再h来深入理解一下传值调用和传引用调用：
 
 你有一把钥匙，当你的朋友想要去你家的时候，如果你`直接`把你的钥匙给他了，这就是引用传递。
 
@@ -96,8 +96,6 @@ IEEE 并没有解决小数无法精确表示的问题，只是提出了一种使
 
 一个浮点数 a 由两个数 m 和 e 来表示：a = m × b^e。
 
-自动装箱都是通过包装类的 valueOf() 方法来实现的.自动拆箱都是通过包装类对象的 xxxValue() 来实现的。
-
 **哪些地方会自动拆装箱**
 
 1. 将基本数据类型添加进集合中
@@ -150,9 +148,9 @@ IEEE 并没有解决小数无法精确表示的问题，只是提出了一种使
 
 如果一个变量 p 的值是：
 
-- -128 至 127 之间的整数 (§3.10.1)
-- true 和 false 的布尔值 (§3.10.3)
-- `\u0000` 至 `\u007f` 之间的字符 (§3.10.4)
+- -128 至 127 之间的整数
+- true 和 false 的布尔值
+- `\u0000` 至 `\u007f` 之间的字符
 
 范围内的时，将 p 包装成 a 和 b 两个对象时，可以直接使用 a == b 判断 a 和 b 的值是否相等。
 
@@ -164,14 +162,14 @@ Byte, Short, Long 有固定范围: -128 到 127。对于 Character, 范围是 0 
 
 语法糖：语法糖（Syntactic sugar），也译为糖衣语法，是由英国计算机科学家彼得·兰丁发明的一个术语，指计算机语言中添加的某种语法，这种语法对语言的功能没有影响，但是更方便程序员使用。语法糖让程序更加简洁，有更高的可读性。
 
-使用+拼接字符串，其实只是 Java 提供的一个语法糖， 那么，我们就来解一解这个语法糖，看看他的内部原理到底是如何实现的。
+使用 + 拼接字符串，其实只是 Java 提供的一个语法糖， 那么，我们就来解一解这个语法糖，看看他的内部原理到底是如何实现的。
 
 还是这样一段代码。我们把他生成的字节码进行反编译，看看结果。
 
 ```markup
 String wechat = "Hollis";
 String introduce = "每日更新Java相关技术文章";
-String hollis = wechat + "," + introduce;复制ErrorOK!
+String hollis = wechat + "," + introduce;
 ```
 
 反编译后的内容如下，反编译工具为 jad。
@@ -179,7 +177,7 @@ String hollis = wechat + "," + introduce;复制ErrorOK!
 ```markup
 String wechat = "Hollis";
 String introduce = "\u6BCF\u65E5\u66F4\u65B0Java\u76F8\u5173\u6280\u672F\u6587\u7AE0";//每日更新Java相关技术文章
-String hollis = (new StringBuilder()).append(wechat).append(",").append(introduce).toString();复制ErrorOK!
+String hollis = (new StringBuilder()).append(wechat).append(",").append(introduce).toString();
 ```
 
 通过查看反编译以后的代码，我们可以发现，原来字符串常量在拼接过程中，是将 String 转成了 StringBuilder 后，使用其 append 方法进行处理的。
@@ -189,52 +187,24 @@ String hollis = (new StringBuilder()).append(wechat).append(",").append(introduc
 但是，String 的使用+字符串拼接也不全都是基于 StringBuilder.append，还有种特殊情况，那就是如果是两个固定的字面量拼接，如：
 
 ```markup
-String s = "a" + "b"复制ErrorOK!
+String s = "a" + "b"
 ```
 
 编译器会进行常量折叠(因为两个都是编译期常量，编译期可知)，直接变成 String s = "ab"。
 
-scope=compile 的情况（默认 scope),也就是说这个项目在编译，测试，运行阶段都需要这个 artifact(模块)对应的 jar 包在 classpath 中。
+**scope=compile 的情况（默认 scope),也就是说这个项目在编译，测试，运行阶段都需要这个 artifact(模块)对应的 jar 包在 classpath 中。**
 
 对于 scope=provided 的情况，则可以认为这个 provided 是目标容器已经 provide 这个 artifact。换句话说，它只影响到编译，测试阶段。在编译测试阶段，我们需要这个 artifact 对应的 jar 包在 classpath 中。
 
-snapshot 快照，alpha 内部测试，beta 公测，release 稳定，GA 正式发布。
+**snapshot 快照，alpha 内部测试，beta 公测，release 稳定，GA 正式发布。**
 
 方法区是**逻辑概念**，而永久代、元空间都是方法区的实现。JDK1.8 中取消了永久代，区而代之使用了元空间来实现方法区。
 
 在 JDK1.8 中，把 JDK 7 中永久代还剩余的内容（主要是类型信息）全部移到元空间中。注意这里的剩余内容：即字符串常量池，静态常量，在 JDK1.8 中，并不属于元空间。
 在 JDK1.8 中，使用元空间代替永久代来实现方法区，但是方法区并没有改变，变动的只是方法区中内容的物理存放位置。正如上面所说，类型信息（元数据信息）等其他信息被移动到了元空间中；但是运行时常量池和字符串常量池被移动到了堆中。
 
-Key Features of Stack Memory
-Some other features of stack memory include:
+intern()版本区别：
 
-It grows and shrinks as new methods are called and returned, respectively.
-Variables inside the stack exist only as long as the method that created them is running.
-It's automatically allocated and deallocated when the method finishes execution.
-If this memory is full, Java throws java.lang.StackOverFlowError.
-Access to this memory is fast when compared to heap memory.
-This memory is threadsafe, as each thread operates in its own stack.
-
-Heap space is used for the dynamic memory allocation of Java objects and JRE classes at runtime. New objects are always created in heap space, and the references to these objects are stored in stack memory.
-
-These objects have global access and we can access them from anywhere in the application.
-
-We can break this memory model down into smaller parts, called generations, which are:
-
-Young Generation – this is where all new objects are allocated and aged. A minor Garbage collection occurs when this fills up.
-Old or Tenured Generation – this is where long surviving objects are stored. When objects are stored in the Young Generation, a threshold for the object's age is set, and when that threshold is reached, the object is moved to the old generation.
-Permanent Generation – this consists of JVM metadata for the runtime classes and application methods.
-
-Key Features of Java Heap Memory
-Some other features of heap space include:
-
-It's accessed via complex memory management techniques that include the Young Generation, Old or Tenured Generation, and Permanent Generation.
-If heap space is full, Java throws java.lang.OutOfMemoryError.
-Access to this memory is comparatively slower than stack memory
-This memory, in contrast to stack, isn't automatically deallocated. It needs Garbage Collector to free up unused objects so as to keep the efficiency of the memory usage.
-Unlike stack, a heap isn't threadsafe and needs to be guarded by properly synchronizing the code.
-
-intern()版本区别
 jdk1.6 中，将这个字符串对象尝试放入串池。
 
 如果串池中有，则并不会放入。返回已有的串池中的对象的地址
@@ -264,7 +234,7 @@ String s = new String("a") + new String("b");
             //jdk6中：在串池中创建一个字符串"ab"
             //jdk8中：字符串池中没有创建字符串"ab",而是创建一个引用，指向new String("ab")，将此引用返回
             String s2 = s.intern();
-
+    
             System.out.println(s2 == "ab");//jdk6:true  jdk8:true
             System.out.println(s == "ab");//jdk6:false  jdk8:true
             System.out.println(s == s2);//jdk8:true
@@ -272,25 +242,3 @@ String s = new String("a") + new String("b");
 JVM 总是动态加载 class，可以在运行期根据条件来控制加载 class。
 
 setAccessible(true)可能会失败。如果 JVM 运行期存在 SecurityManager，那么它会根据规则进行检查，有可能阻止 setAccessible(true)。例如，某个 SecurityManager 可能不允许对 java 和 javax 开头的 package 的类调用 setAccessible(true)，这样可以保证 JVM 核心库的安全。
-![img](D:\2023年\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTg2NjcxNw==,size_16,color_FFFFFF,t_70)
-
-When the method finishes execution, its corresponding stack frame is flushed, the flow goes back to the calling method, and space becomes available for the next method.
-
-Stack Memory in Java is used for static memory allocation and the execution of a thread.
-
-To run an application in an optimal way, JVM divides memory into stack and heap memory.
-
-Java language specification doesn't allow usage of primitive types in the parametrized types (generics),  in the Java collections or the Reflection API.
-
-Surprisingly, arrays of the primitive types long and double consume more memory than their wrapper classes Long and Double.
-We can see either that single-element arrays of primitive types are almost always more expensive (except for long and double) than the corresponding reference type.
-
-It turns out that a single instance of a reference type on this JVM occupies 128 bits except for Long and Double which occupy 192 bits:
-Boolean – 128 bits
-Byte – 128 bits
-Short, Character – 128 bits
-Integer, Float – 128 bits
-Long, Double – 192 bits
-We can see that a single variable of Boolean type occupies as much space as 128 primitive ones, while one Integer variable occupies as much space as four int ones.
-
-To get an object's internal structure, we may use the Java Object Layout tool (see our another tutorial on how to get the size of an object).
