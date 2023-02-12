@@ -1,8 +1,8 @@
-# 类路径和jar
+# 类路径和 jar
 
 ## 类路径 classpath
 
-所以，`classpath`就是一组目录的集合，它设置的搜索路径与操作系统相关。例如，在Windows系统上，用`;`分隔，带空格的目录用`""`括起来，可能长这样：
+`classpath`就是一组目录的集合，它设置的搜索路径与操作系统相关。例如，在Windows系统上，用`;`分隔，带空格的目录用`""`括起来，可能长这样：
 
 ```
 C:\work\project1\bin;C:\shared;"D:\My Documents\project1\bin"
@@ -64,40 +64,13 @@ java -cp ./hello.jar abc.xyz.Hello
 
 这样JVM会自动在`hello.jar`文件里去搜索某个类。
 
-那么问题来了：如何创建jar包？
-
-因为jar包就是zip包，所以，直接在资源管理器中，找到正确的目录，点击右键，在弹出的快捷菜单中选择“发送到”，“压缩(zipped)文件夹”，就制作了一个zip文件。然后，把后缀从`.zip`改为`.jar`，一个jar包就创建成功。
-
-假设编译输出的目录结构是这样：
-
-```ascii
-package_sample
-└─ bin
-   ├─ hong
-   │  └─ Person.class
-   │  ming
-   │  └─ Person.class
-   └─ mr
-      └─ jun
-         └─ Arrays.class
-```
-
-这里需要特别注意的是，jar包里的第一层目录，不能是`bin`，而应该是`hong`、`ming`、`mr`。如果在Windows的资源管理器中看，应该长这样：
-
-![hello.zip.ok](https://www.liaoxuefeng.com/files/attachments/1261393208671488/l)
-
-如果长这样：
-
-![hello.zip.invalid](https://www.liaoxuefeng.com/files/attachments/1261391527906784/l)
-
-说明打包打得有问题，JVM仍然无法从jar包中查找正确的`class`，原因是`hong.Person`必须按`hong/Person.class`存放，而不是`bin/hong/Person.class`。
-
 jar包还可以包含一个特殊的`/META-INF/MANIFEST.MF`文件，`MANIFEST.MF`是纯文本，可以指定`Main-Class`和其它信息。JVM会自动读取这个`MANIFEST.MF`文件，如果存在`Main-Class`，我们就不必在命令行指定启动的类名，而是用更方便的命令：
 
 ```
 java -jar hello.jar
 ```
 
-jar包还可以包含其它jar包，这个时候，就需要在`MANIFEST.MF`文件里配置`classpath`了。
+jar包还可以包含其它jar包，这个时候，就需要在`MANIFEST.MF`文件里配置`classpath`了（Spring Boot 项目的 jar 包）。
 
-在大型项目中，不可能手动编写`MANIFEST.MF`文件，再手动创建zip包。Java社区提供了大量的开源构建工具，例如[Maven](https://www.liaoxuefeng.com/wiki/1252599548343744/1255945359327200)，可以非常方便地创建jar包。
+在大型项目中，不可能手动编写`MANIFEST.MF`文件，再手动创建zip包。Java社区提供了大量的开源构建工具，例如 Maven，可以非常方便地创建jar包。
+

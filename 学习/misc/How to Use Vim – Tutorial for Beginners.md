@@ -8,7 +8,7 @@
 
 2. Command-Line Mode
 
-   在命令模式下按 : 进入底行模式
+   在命令模式下按 **:** 进入底行模式
 
 3. Insert Mode
 
@@ -70,11 +70,11 @@ Visual mode
 
 Keyboard
 
-nyy 复制
+nyy 复制，复制从当前光标处所在行的 n 行。
 
 ndd 剪切
 
-np 粘贴
+np 粘贴，粘贴 n 次复制或剪切的内容。
 
 ## 查找并替换文本
 
