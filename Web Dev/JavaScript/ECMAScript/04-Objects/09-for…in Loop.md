@@ -2,7 +2,7 @@
 
 ## Introduction to JavaScript for…in loop
 
-for...in 循环遍历由对象字符串作为键的可枚举属性。请注意，属性可以通过字符串（string）或符号（symbol）作为键。
+for...in 循环遍历由对象字符串作为键的可枚举属性。注意，属性可以通过字符串（string）或符号（symbol）作为键。
 
 当属性的内部可枚举（enumerable）标志设置为 true 时，该属性是可枚举的。
 

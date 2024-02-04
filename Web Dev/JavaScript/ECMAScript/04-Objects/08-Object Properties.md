@@ -2,13 +2,13 @@
 
 ## Object Property types
 
-JavaScript 通过两对方括号括起来的内部属性来指定对象的属性特征，例如 [[Enumerable]]。
+JavaScript specifies the characteristics of properties of objects via internal **attributes** surrounded by the two pairs of square brackets, e.g., `[[Enumerable]]`.
 
 对象有两种类型的属性：数据属性和访问器属性（accessor properties）。
 
 ### Data properties
 
-A data property contains a single location for a data value. A data property has four attributes:
+A data property contains a single location for a data value. A data property has four attributes(PropertyDescriptor):
 
 - [[Configurarable]] – determines whether a property can be redefined or removed via delete operator.
 
@@ -213,3 +213,4 @@ enumerable: false
 get: ƒ ()
 set: undefined
 ```
+
