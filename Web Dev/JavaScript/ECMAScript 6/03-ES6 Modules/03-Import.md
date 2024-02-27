@@ -4,7 +4,7 @@
 
 ES6 模块允许 JavaScript 代码构建为模块并在模块之间共享值（变量、函数、类等）。
 
-要从模块导入值，请使用 import 关键字。此外，还需要将 JavaScript 源文件作为模块加载。在 HTML 中，通过在 script 标签中指定 type="module" 来完成此操作：
+要从模块导入值，使用 import 关键字。此外，还需要将 JavaScript 源文件作为模块加载。在 HTML 中，通过在 script 标签中指定 type="module" 来完成此操作：
 
 ```js
 <script type="module" src="app.js"></script>

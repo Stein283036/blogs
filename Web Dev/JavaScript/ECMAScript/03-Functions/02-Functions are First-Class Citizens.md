@@ -38,7 +38,7 @@ function average(a, b, fn) {
 }
 ```
 
-现在，可以将 sum 函数传递给average() 函数，如下所示：
+现在，可以将 sum 函数传递给 average() 函数，如下所示：
 
 ```js
 let result = average(10, 20, sum);
@@ -48,7 +48,7 @@ let result = average(10, 20, sum);
 
 由于函数是值，因此可以从另一个函数返回一个函数。
 
-下面的compareBy()函数返回一个通过属性比较两个对象的函数：
+下面的 compareBy() 函数返回一个通过属性比较两个对象的函数：
 
 ```js
 function compareBy(propertyName) {
@@ -85,12 +85,3 @@ products.sort(compareBy('name'));
 
 console.table(products);
 ```
-
-
-
-
-
-
-
-
-

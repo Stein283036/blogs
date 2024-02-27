@@ -37,10 +37,3 @@ if (expression === value1) {
   statement;
 }
 ```
-
-
-
-
-
-
-

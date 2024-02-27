@@ -10,7 +10,7 @@ const CONSTANT_NAME = value;
 
 按照惯例，常量标识符的单词是全大写的，单词之间使用 _ 分隔。
 
-与 let 关键字一样，const 关键字声明 block-scoped 变量。然而，const关键字声明的块作用域变量不能被重新赋值。
+与 let 关键字一样，const 关键字声明 block-scoped 变量。然而，const 关键字声明的块作用域变量不能被重新赋值。
 
 与 let 关键字不同的是需要将值初始化为 const 关键字声明的变量。
 
@@ -101,4 +101,4 @@ for (const score of scores) {
 }
 ```
 
-for...of 在每次循环迭代中为 const 关键字创建一个新绑定。换句话说，每次迭代都会创建一个新的分数常量。
+for...of 在每次循环迭代中为 const 关键字创建一个新绑定。换句话说，每次迭代都会创建一个新的 score 常量。

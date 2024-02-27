@@ -10,7 +10,7 @@ JavaScript 立即调用函数表达式是定义为表达式并在创建后立即
 
 ## Why IIFEs
 
-当定义函数时，JavaScript 引擎会将该函数添加到全局对象中。请参见以下示例：
+当定义函数时，JavaScript 引擎会将该函数添加到全局对象中。
 
 ```js
 function add(a,b) {
@@ -78,7 +78,7 @@ console.log(sum); // 30
 
 ```js
 (function(a,b){
-        return a + b;
+    return a + b;
 })(10,20);
 ```
 
@@ -148,7 +148,7 @@ IIFE 可以有一个名称。但执行后无法再次调用：
 })()
 ```
 
-如果您使用代码 bundler tool 将两个文件中的代码连接到一个文件中，如果没有分号 (;)，则连接的 JavaScript 代码将导致语法错误。
+如果使用代码 bundler tool 将两个文件中的代码连接到一个文件中，如果没有分号 (;)，则连接的 JavaScript 代码将导致语法错误。
 
 ## IIFE in actions
 
@@ -223,7 +223,7 @@ IIFE 返回一个对象，其中包含引用 add() 和 multiply() 函数的 add 
   <script src="js/calculator.js"></script>
   <script src="js/app.js"></script>
   <script>
-    let result = calculator.add(10, 20); // add in app.js
+    let result = calculator.add(10, 20); // add in calculator.js
     console.log(result); // 30
     console.log(add()); // add in the app.js
   </script>
@@ -260,16 +260,3 @@ calculator.add() 调用了 calculator.js 导出的 对象方法 add()，而对 a
 当导入 jQuery 库时，可以通过 $ 或 jQuery 函数对象访问许多有用的 jQuery 函数。在底层，jQuery 使用 IIFE 来暴露其功能。
 
 通过这样做，jQuery 只需要使用一个全局变量 ($) 来暴露大量函数，而不会污染全局对象。
-
-下面的示例说明了如何在 IIFE 中将 jQuery $ 对象更改为 _：
-
-```js
- (function (_) {
-      let counter = 1;
-      _('h1').click(function () {
-        _(this).text('jQuery Demo' + ' Clicked ' + counter++);
-      });
-  })(jQuery);
-```
-
-在此示例中，我们将 jQuery 对象传递到 IIFE 并使用 _ 参数代替。

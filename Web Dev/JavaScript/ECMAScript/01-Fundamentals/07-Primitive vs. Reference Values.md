@@ -18,8 +18,6 @@ Primitive values are atomic pieces of data while reference values are objects th
 
 由于静态数据的大小不会改变，因此 JavaScript 引擎会为静态数据分配固定大小的内存空间并将其存储在堆栈中。
 
-> 请注意，字符串是许多编程语言中的对象，包括 Java 和 C#。然而，字符串是 JavaScript 中的原始值。
-
 与堆栈不同，JavaScript 在堆上存储对象（和函数）。JavaScript 引擎不会为这些对象分配固定数量的内存。相反，它会根据需要分配更多空间。
 
 ## Dynamic Properties
@@ -34,26 +32,20 @@ let person = {
 
 // add the ssn property
 person.ssn = '123-45-6789';
-
 // change the name
 person.name = 'John Doe';
-
 // delete the age property
 delete person.age;
-
-
-console.log(person);
-{ name: 'John Doe', ssn: '123-45-6789' }
+console.log(person); // { name: 'John Doe', ssn: '123-45-6789' }
 ```
 
-与引用值不同，原始值不能具有属性。这意味着您无法将属性添加到原始值。
+与引用值不同，原始值不能具有属性。这意味着无法将属性添加到原始值。
 
 JavaScript 允许向原始值添加属性。但是，它不会产生任何效果。例如：
 
 ```js
 let name = 'John';
 name.alias = 'Knight';
-
 console.log(name.alias); // undefined
 ```
 
@@ -87,12 +79,3 @@ console.log(member);
 ```
 
 ![img](https://www.javascripttutorial.net/wp-content/uploads/2022/01/JavaScript-copy-a-reference-value.svg)
-
-
-
-
-
-
-
-
-

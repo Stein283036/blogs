@@ -4,15 +4,13 @@
 
 bind() 方法返回一个新函数，调用时将其 this 设置为特定值。
 
-下面说明了bind()方法的语法：
-
 ```js
 fn.bind(thisArg[, arg1[, arg2[, ...]]])
 ```
 
 在此语法中，bind() 方法返回函数 fn 的副本，其中包含特定的 this 值 (thisArg) 和参数 (arg1、arg2、...)。
 
-与 call() 和 apply() 方法不同，bind() 方法不会立即执行该函数。它只是返回函数的新版本，该函数的 this 设置为 thisArg 参数。
+与 call() 和 apply() 方法不同，bind() 方法**不会立即执行该函数**。它只是返回函数的新版本，该函数的 this 设置为 thisArg 参数。
 
 ## Using JavaScript `bind()` for function binding
 
@@ -27,7 +25,7 @@ let person = {
 setTimeout(person.getName, 1000); // undefined
 ```
 
-从输出中可以清楚地看到，person.getName() 返回未定义而不是“John Doe”。
+从输出中可以清楚地看到，person.getName() 返回 undefined 而不是“John Doe”。
 
 这是因为 setTimeout() 接收的函数 person.getName 与 person 对象是分开的。
 
@@ -58,7 +56,7 @@ setTimeout(function () {
 
 这是有效的，因为它从外部范围获取 person，然后调用方法 getName()。
 
-或者可以使用bind()方法：
+或者可以使用 bind() 方法：
 
 ```js
 let f = person.getName.bind(person);
@@ -78,7 +76,7 @@ let runner = {
 };
 ```
 
-以及具有 fly() 方法的 fly 对象：
+以及具有 fly() 方法的 flyer 对象：
 
 ```js
 let flyer = {

@@ -2,9 +2,7 @@
 
 ## Introduction to JavaScript prototypal inheritance
 
-如果使用过其他面向对象的编程语言（例如 Java 或 C++），就会熟悉继承概念。
-
-在这种编程范式中，类是创建对象的蓝图。如果希望新类重用现有类的功能，可以创建一个扩展现有类的新类。这称为经典继承。
+在 OOP 编程范式中，类是创建对象的蓝图。如果希望新类重用现有类的功能，可以创建一个扩展现有类的新类。这称为经典继承。
 
 JavaScript 不使用经典继承。相反，它使用原型继承。
 
@@ -42,7 +40,7 @@ console.log(person.toString());
 
 [object Object] 是对象的默认字符串表示形式。
 
-当通过 person 调用 toString() 方法时，JavaScript 引擎无法在 person 对象上找到它。因此，它沿着原型链寻找Object.prototype对象中的方法。
+当通过 person 调用 toString() 方法时，JavaScript 引擎无法在 person 对象上找到它。因此，它沿着原型链寻找 Object.prototype 对象中的方法。
 
 要访问 person 对象的原型，可以使用 `__proto__ ` 属性，如下所示
 
@@ -50,11 +48,11 @@ console.log(person.toString());
 console.log(person.__proto__);
 ```
 
->  请注意，永远不应该在生产代码中使用 __proto__ 属性。请仅将其用于演示目的。
+>  注意，永远不应该在生产代码中使用 __proto__ 属性。
 
 下面显示了 `person.__proto__` 和 Object.prototype 引用了同一个对象：
 
-下面定义了具有teach()方法的teacher对象：
+下面定义了具有 teach() 方法的 teacher 对象：
 
 ```js
 let teacher = {
@@ -70,7 +68,7 @@ let teacher = {
 
 
 
-如果想让teacher对象访问person对象的所有方法和属性，可以将teacher对象的原型设置为person对象，如下所示：
+如果想让 teacher 对象访问 person 对象的所有方法和属性，可以将 teacher 对象的原型设置为 person 对象，如下所示：
 
 ```js
 teacher.__proto__ = person;
@@ -80,26 +78,24 @@ teacher.__proto__ = person;
 
 
 
-现在，teacher 对象可以通过原型链从 person 对象访问 name 属性和greet() 方法：
+现在，teacher 对象可以通过原型链从 person 对象访问 name 属性和 greet() 方法：
 
 ```js
-console.log(teacher.name);
-console.log(teacher.greet());
-John Doe
-Hi, I'm John Doe
+console.log(teacher.name); // John Doe
+console.log(teacher.greet()); // Hi, I'm John Doe
 ```
 
-当您在教师对象上调用greet()方法时，JavaScript引擎首先在teacher对象中找到它。
+当在 teacher 对象上调用 greet() 方法时，JavaScript 引擎首先在 teacher 对象中找到它。
 
-由于JavaScript引擎无法在teacher对象中找到该方法，因此它沿着原型链在person对象中搜索该方法。因为JavaScript引擎可以在person对象中找到greet()方法，所以它会执行该方法。
+由于 JavaScript 引擎无法在 teacher 对象中找到该方法，因此它沿着原型链在 person 对象中搜索该方法。因为 JavaScript 引擎可以在person 对象中找到 greet() 方法，所以它会执行该方法。
 
-在JavaScript中，我们说teacher对象继承了person对象的方法和属性。这种继承称为原型继承（**prototypal inheritance**）。
+在 JavaScript 中，我们说 teacher 对象继承了 person 对象的方法和属性。这种继承称为原型继承（**prototypal inheritance**）。
 
 ## A standard way to implement prototypal inheritance in ES5
 
 ES5 通过使用 Object.create() 方法提供了一种处理原型继承的标准方法。
 
-> 请注意，现在应该使用较新的 ES6 类和 extends 关键字来实现继承。简单多了。
+> 注意，现在应该使用较新的 ES6 类和 extends 关键字来实现继承。简单多了。
 
 Object.create() 方法创建一个新对象并使用现有对象作为新对象的原型：
 
@@ -123,13 +119,13 @@ let person = {
 };
 ```
 
-以下代码使用 person 对象的 `__proto__` 创建一个空的 teacher 对象：
+以下代码使用 person 对象作为原型对象创建一个空的 teacher 对象：
 
 ```js
 let teacher = Object.create(person);
 ```
 
-之后，可以为教师对象定义属性：
+之后，可以为 teacher 对象定义属性：
 
 ```js
 teacher.name = 'Jane Doe';
@@ -149,37 +145,8 @@ let teacher = Object.create(person, {
 });
 ```
 
-ES5还引入了Object.getPrototypeOf()方法，该方法返回对象的原型。例如：
+ES5 还引入了 Object.getPrototypeOf() 方法，该方法返回对象的原型。
 
 ``` js
 console.log(Object.getPrototypeOf(teacher) === person); // true
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

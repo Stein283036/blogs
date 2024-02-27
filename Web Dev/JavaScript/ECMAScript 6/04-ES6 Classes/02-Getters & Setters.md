@@ -51,7 +51,7 @@ console.log(person.getName()); // Jane Smith
 
 getName() 和 setName() 方法在其他编程语言（例如 Java 和 C++）中称为 getter 和 setter。
 
-ES6 提供了使用 get 和 set 关键字定义 getter 和 setter 的特定语法。例如：
+ES6 提供了使用 get 和 set 关键字定义 getter 和 setter 的特定语法。
 
 ```js
 class Person {
@@ -109,7 +109,7 @@ set name(newName) {
 person.name = 'Jane Smith';
 ```
 
-如果一个类只有 getter 而没有 setter，并且尝试使用 setter，则更改不会生效。请参见以下示例：
+如果一个类只有 getter 而没有 setter，并且尝试使用 setter，则更改不会生效。
 
 ```js
 class Person {

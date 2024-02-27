@@ -4,7 +4,14 @@
 
 可选的链接运算符 (?.) 就像访问一系列对象中的嵌套属性的快捷方式。可以使用运算符 ?，而不必检查链中的每个步骤是否为空（null 或 undefined）。直接访问所需的属性。
 
-如果链的任何部分为空，则可选链接运算符 (?.) 将在那里停止并给出未定义的结果，无需为链中的每个步骤编写额外的检查。
+如果可选链 `?.` 前面的值为 `undefined` 或者 `null`，它会停止运算并返回 `undefined`。
+
+**如果一个属性既不是 `null` 也不是 `undefined`，那么它就“存在”。**
+
+换句话说，例如 `value?.prop`：
+
+- 如果 `value` 存在，则结果与 `value.prop` 相同，
+- 否则（当 `value` 为 `undefined/null` 时）则返回 `undefined`。
 
 假设有一个返回 user 对象的函数：
 
@@ -190,4 +197,25 @@ function getUser(id, callback) {
 
     return user;
 }
+```
+
+使用方括号 `[]` 而不是点符号 `.` 来访问属性，语法 `?.[]` 也可以使用。它允许从一个可能不存在的对象上安全地读取属性。
+
+```js
+let key = "firstName";
+
+let user1 = {
+  firstName: "John"
+};
+
+let user2 = null;
+
+alert( user1?.[key] ); // John
+alert( user2?.[key] ); // undefined
+```
+
+此外，我们还可以将 `?.` 跟 `delete` 一起使用：
+
+```javascript
+delete user?.name; // 如果 user 存在，则删除 user.name
 ```

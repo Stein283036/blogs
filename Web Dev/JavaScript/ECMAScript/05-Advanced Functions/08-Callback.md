@@ -6,7 +6,7 @@
 
 根据定义，回调是一个函数，可以将其作为参数传递给另一个函数以便稍后执行（定时任务、用户输入的事件处理等）。
 
-下面定义了一个filter()函数，它接受一个数字数组并返回一个新的奇数数组：
+下面定义了一个 filter() 函数，它接受一个数字数组并返回一个新的奇数数组：
 
 ```js
 function filter(numbers) {
@@ -22,10 +22,10 @@ let numbers = [1, 2, 4, 7, 3, 5, 6];
 console.log(filter(numbers));
 ```
 
-如果要返回包含偶数的数组，则需要修改filter()函数。为了使filter()函数更加通用和可重用，可以：
+如果要返回包含偶数的数组，则需要修改 filter() 函数。为了使 filter() 函数更加通用和可重用，可以：
 
 - 首先，提取 if 块中的逻辑并将其包装在单独的函数中。
-- 其次，将该函数作为实参传递给 filter() 函数。
+- 其次，将该函数作为实参（回调函数）传递给 filter() 函数。
 
 ```js
 function isOdd(number) {
@@ -50,7 +50,7 @@ console.log(filter(numbers, isOdd));
 console.log(filter(numbers, isEven));
 ```
 
-根据定义，isOdd 和 isEven 是回调函数或回调。因为filter()函数接受一个函数作为参数，所以它被称为高阶函数（*high-order function*）。
+根据定义，isOdd 和 isEven 是回调函数或回调。因为 filter() 函数接受一个函数作为参数，所以它被称为高阶函数（*high-order function*）。
 
 回调可以是匿名函数，它是没有名称的函数，如下所示：
 
@@ -197,7 +197,7 @@ Processing https://www.javascripttutorial.net/pic.jpg
 
 当在异步操作后使用回调继续执行代码时，该回调称为异步回调。
 
-为了使代码更加简洁，可以将process()函数定义为匿名函数：
+为了使代码更加简洁，可以将 process() 函数定义为匿名函数：
 
 ```js
 function download(url, callback) {
@@ -218,7 +218,7 @@ download(url, function(picture) {
 
 ### Handling errors
 
-download() 函数假设一切正常并且不考虑任何异常。下面的代码引入了两个回调：success和failure，分别处理成功和失败的情况：
+download() 函数假设一切正常并且不考虑任何异常。下面的代码引入了两个回调：success 和 failure，分别处理成功和失败的情况：
 
 ```js
 function download(url, success, failure) {

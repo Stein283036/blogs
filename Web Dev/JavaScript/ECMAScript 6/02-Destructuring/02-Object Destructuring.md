@@ -24,7 +24,7 @@ ES6 引入了对象解构语法，它提供了另一种将对象属性分配给�
 let { firstName: fname, lastName: lname } = person;
 ```
 
-在此示例中，firstName 和 lastName 属性分别分配给 fName 和 lName 变量。冒号（:）之前的标识符是对象的属性，冒号之后的标识符是变量。
+在此示例中，firstName 和 lastName 属性分别分配给 fname 和 lname 变量。冒号（:）之前的标识符是对象的属性，冒号之后的标识符是变量。
 
 如果变量与对象的属性具有相同的名称，则可以使代码更加简洁，如下所示：
 
@@ -34,7 +34,7 @@ console.log(firstName); // 'John'
 console.log(lastName); // 'Doe'
 ```
 
-当使用对象解构将不存在的属性分配给变量时，该变量将设置为未定义。例如：
+当使用对象解构将不存在的属性分配给变量时，该变量将设置为 `undefined`。
 
 ```js
 let { firstName, lastName, middleName } = person;
@@ -43,7 +43,7 @@ console.log(middleName); // undefined
 
 ## Setting default values
 
-当对象的属性不存在时，可以为变量分配默认值。例如：
+当对象的属性不存在时，可以为变量分配默认值。
 
 ```js
 let person = {
@@ -60,7 +60,7 @@ console.log(age); // 28
 
 ## Destructuring a null object
 
-在某些情况下，函数可能返回对象或 null。例如：
+在某些情况下，函数可能返回对象或 null。
 
 ```js
 function getPerson() {
@@ -79,7 +79,9 @@ TypeError: Cannot destructure property 'firstName' of 'getPerson(...)' as it is 
 
 为了避免这种情况，可以使用 OR 运算符 (||) 将 null 对象回退为空对象：
 
-现在，不会发生任何错误。并且firstName和lastName的值是 undefined。
+```js
+let { firstName, lastName } = getPerson() || {};
+```
 
 ## Nested object destructuring
 
@@ -134,5 +136,3 @@ let person = {
 };
 display(person);
 ```
-
-它看起来不那么冗长，尤其是当使用参数对象的许多属性时。这种技术在 React 中经常使用。

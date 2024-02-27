@@ -1,0 +1,72 @@
+# JavaScript getElementsByClassName
+
+## Introduction to the getElementsByClassName() method
+
+The `getElementsByClassName()` method returns an array-like of objects of the child elements with a specified class name.The `getElementsByClassName()` method is available on the `document` element or any other elements.
+
+When calling the method on the `document` element, it searches the entire document and returns the child elements of the document:
+
+```js
+let elements = document.getElementsByClassName(classNames);
+```
+
+However, when calling the method on a specific element, it returns the descendants of that specific element with the given class name:
+
+```js
+let elements = rootElement.getElementsByClassName(classNames);
+```
+
+The method returns the `elements` which is a live HTMLCollection of the matches elements.
+
+## JavaScript getElementsByClassName() method examples
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript getElementsByClassName</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul id="menu">
+                <li class="item">HTML</li>
+                <li class="item">CSS</li>
+                <li class="item highlight">JavaScript</li>
+                <li class="item">TypeScript</li>
+            </ul>
+        </nav>
+        <h1>getElementsByClassName Demo</h1>
+    </header>
+    <section>
+        <article>
+            <h2 class="secondary">Example 1</h2>
+        </article>
+        <article>
+            <h2 class="secondary">Example 2</h2>
+        </article>
+    </section>
+</body>
+</html>
+```
+
+###  Calling JavaScript getElementsByClassName() on an element example
+
+The following example illustrates how to use the `getElementsByClassName()` method to select the `<li>` items which are the descendants of the `<ul>` element:
+
+```js
+let menu = document.getElementById('menu');
+let items = menu.getElementsByClassName('item');
+let data = [].map.call(items, item => item.textContent);
+console.log(data); // ['HTML', 'CSS', 'JavaScript', 'TypeScript']
+```
+
+### Calling JavaScript getElementsByClassName() on the document example
+
+```js
+let elements = document.getElementsByClassName('secondary');
+let data = [].map.call(elements, elem => elem.textContent);
+console.log(data); // ["Example 1", "Example 2"]
+```

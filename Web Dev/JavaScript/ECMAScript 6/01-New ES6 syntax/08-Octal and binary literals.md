@@ -17,7 +17,7 @@ let a = 051;
 console.log(a); // 41
 ```
 
-如果八进制文字包含超出范围的数字，JavaScript 会忽略前导 0 并将八进制字面量视为十进制：
+如果八进制字面量包含超出范围的数字，JavaScript 会忽略前导 0 并将八进制字面量视为十进制：
 
 ```js
 let b = 058; // invalid octal

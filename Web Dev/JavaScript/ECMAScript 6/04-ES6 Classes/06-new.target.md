@@ -39,11 +39,11 @@ Person('Lily');
 console.log(window.name); //Lily
 ```
 
-为了帮助检测是否使用 new 运算符调用函数，您可以使用 new.target 元属性。
+为了帮助检测是否使用 new 运算符调用函数，可以使用 new.target 元属性。
 
 在常规函数调用中，new.target 返回 undefined。如果使用 new 运算符调用该函数，则 new.target 返回对该函数的引用。
 
-假设不希望 Person 作为普通函数被调用，你可以使用 new.target，如下所示：
+假设不希望 Person 作为普通函数被调用，可以使用 new.target，如下所示：
 
 ```js
 function Person(name) {

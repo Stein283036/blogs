@@ -64,7 +64,7 @@ let person2 = createPerson('Jane', 'Doe');
 并将此方法移至另一个对象：
 
 ```js
-var personActions = {
+const personActions = {
   getFullName() {
     return this.firstName + ' ' + this.lastName;
   },
@@ -95,7 +95,7 @@ Object.create(proto, [propertiesObject])
 ```
 
 ```js
-var personActions = {
+const personActions = {
   getFullName() {
     return this.firstName + ' ' + this.lastName;
   },

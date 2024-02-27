@@ -2,7 +2,7 @@
 
 ## Introduction to JavaScript rest parameters
 
-ES6 提供了一种新的参数，称为 rest parameter，其前缀为三个点 (...)。rest parameter 允许将不定数量的参数表示为数组。请参阅以下语法：
+ES6 提供了一种新的参数，称为 rest parameter，其前缀为三个点 (...)。rest parameter 允许将不定数量的参数表示为数组。
 
 ```js
 function fn(a,b,...args) {
@@ -12,7 +12,7 @@ function fn(a,b,...args) {
 
 最后一个参数 (args) 以三个点 (...) 为前缀。它称为 rest parameter。
 
-传递给函数的所有实参都将映射到参数列表。在上面的语法中，第一个参数映射到 a，第二个参数映射到 b，第三个、第四个等将作为数组存储在 rest parameter args 中。例如：
+传递给函数的所有实参都将映射到参数列表。在上面的语法中，第一个参数映射到 a，第二个参数映射到 b，第三个、第四个等将作为数组存储在 rest parameter args 中。
 
 ```js
 fn(1, 2, 3, "A", "B", "C");
@@ -30,7 +30,7 @@ args 数组存储以下值：
 fn(1,2);
 ```
 
-请注意，rest parameter 必须出现在参数列表的末尾。以下代码将导致错误：
+注意，rest parameter 必须出现在参数列表的末尾。以下代码将导致错误：
 
 ```js
 function fn(a,...rest, b) {
@@ -40,8 +40,6 @@ SyntaxError: Rest parameter must be last formal parameter
 ```
 
 ## More JavaScript rest parameters examples
-
-参见以下示例：
 
 ```js
 function sum(...args) {
@@ -78,9 +76,9 @@ let result = sum(10,'Hi',null,undefined,20);
 console.log(result); // 30
 ```
 
-如果没有其余参数，必须使用函数的参数对象。
+如果没有 rest parameter，必须使用函数的 arguments 对象。
 
-但是，arguments 对象本身并不是 Array 类型的实例。因此，不能直接使用filter()方法。在 ES5 中，必须使用 Array.prototype.filter.call()，如下所示：
+但是，arguments 对象本身并不是 Array 类型的实例。因此，不能直接使用 filter() 方法。在 ES5 中，必须使用 Array.prototype.filter.call()，如下所示：
 
 ```js
 function sum() {
@@ -106,7 +104,7 @@ function filterBy(type, ...args) {
 
 ## JavaScript rest parameters and arrow function
 
-箭头函数没有参数对象。因此，如果要向箭头函数传递一些参数，则必须使用 rest parameter。
+箭头函数没有 arguments 对象。因此，如果要向箭头函数传递一些参数，则必须使用 rest parameter。
 
 ```js
 const combine = (...args) => {
@@ -122,7 +120,7 @@ console.log(message); // JavaScript Rest Parameters
 
 ## JavaScript rest parameter in a dynamic function
 
-JavaScript 可以通过 Function 构造函数创建动态函数。并且可以在动态函数中使用剩余参数。
+JavaScript 可以通过 Function 构造函数创建动态函数。并且可以在动态函数中使用 rest parameter。
 
 ```js
 var showNumbers = new Function('...numbers', 'console.log(numbers)');

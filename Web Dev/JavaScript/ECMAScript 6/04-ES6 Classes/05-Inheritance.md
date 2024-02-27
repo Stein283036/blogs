@@ -180,7 +180,7 @@ bingo.walk();
 
 ## Inheriting static members
 
-除了属性和方法之外，子类还继承父类的所有静态属性和方法。例如：
+除了属性和方法之外，子类还继承父类的所有静态属性和方法。
 
 ```js
 class Animal {

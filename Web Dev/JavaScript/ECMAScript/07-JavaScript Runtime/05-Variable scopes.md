@@ -26,7 +26,7 @@ The variable `message` is global-scoped. It can be accessible everywhere in the 
 
 ## Local scope
 
-在函数内声明的变量是该函数的局部变量。它们被称为局部变量。例如：
+在函数内声明的变量是该函数的局部变量。它们被称为局部变量。
 
 ```js
 var message = 'Hi';

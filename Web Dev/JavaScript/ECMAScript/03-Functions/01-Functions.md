@@ -23,7 +23,7 @@ function functionName(parameters) {
 
 ## Calling a function
 
-要使用函数，需要调用它。调用函数也称为调用函数。要调用函数，可以使用其名称，后跟括在括号中的参数，如下所示：
+要使用函数，需要调用它。调用函数也称为调用函数。要调用函数，可以使用其名称，后跟括在括号中的实参：
 
 ```js
 functionName(arguments);
@@ -31,13 +31,13 @@ functionName(arguments);
 
 ### Parameters vs. Arguments
 
-术语参数和参数通常可以互换使用。然而，它们本质上是不同的。
+术语 parameters 和 arguments 通常可以互换使用。然而，它们本质上是不同的。
 
 声明函数时，指定形参。但是，在调用函数时，传递与形参相对应的实参。
 
 ## Returning a value
 
-JavaScript 中的每个函数都会隐式返回 undefined，除非显式指定返回值。例如：
+JavaScript 中的每个函数都会隐式返回 undefined，除非显式指定返回值。
 
 ```js
 function say(message) {
@@ -51,7 +51,7 @@ Hello
 Result: undefined
 ```
 
-要指定函数的返回值，请使用 return 语句，后跟表达式或值，如下所示：
+要指定函数的返回值，使用 return 语句，后跟表达式或值：
 
 ```js
 return expression;
@@ -69,9 +69,11 @@ arguments 对象的行为类似于数组，尽管它不是 Array 类型的实例
 
 ## Function hoisting
 
-JavaScript 中的提升（Hoisting）是指在代码执行过程中，JavaScript 引擎会将变量声明（var）、函数声明（function）以及类声明（class）提升到其作用域的顶部，但是只是提升声明本身，而不是初始化或赋值。
+JavaScript 中的提升（Hoisting）是指在代码执行过程中，JavaScript 引擎会将变量声明（var）、函数声明（function）提升到其作用域的顶部，但是只是提升声明本身，而不是初始化或赋值。
 
-只有变量声明、函数声明和类声明会被提升，而变量赋值、函数表达式（如匿名函数表达式、箭头函数表达式）、类表达式不会被提升。
+函数声明和类声明之间的一个重要区别在于，函数声明会提升，类声明不会。你首先需要声明你的类，然后再访问它。
+
+只有变量声明、函数声明会被提升，而变量赋值、函数表达式（如匿名函数表达式、箭头函数表达式）不会被提升。
 
 在 JavaScript 中，可以在声明函数之前使用它。
 
@@ -84,8 +86,3 @@ function showMe(){
 ```
 
 此功能称为提升。函数提升是 JavaScript 引擎在执行函数声明之前将函数声明物理移动到代码顶部的一种机制。
-
-
-
-
-

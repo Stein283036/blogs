@@ -79,7 +79,7 @@ for (let i = 0; i < 5; i++) {
 }
 ```
 
-为了让代码完全符合ES6风格，可以使用箭头函数：
+为了让代码完全符合 ES6 风格，可以使用箭头函数：
 
 ```js
 for (let i = 0; i < 5; i++) {
@@ -127,7 +127,8 @@ In this example, accessing the `counter` variable before declaring it causes a `
 The following example illustrates that the temporal dead zone is time-based, not location-based*.*
 
 ```js
-{ // enter new scope, TDZ starts
+{ 
+    // enter new scope, TDZ starts
     let log = function () {
         console.log(message); // message declared later
     };
@@ -151,7 +152,8 @@ The following example illustrates that the temporal dead zone is time-based, not
 如果访问 TDZ 中由 let 关键字声明的变量，将得到一个 ReferenceError：
 
 ```js
-{ // TDZ starts
+{ 
+    // TDZ starts
     console.log(typeof myVar); // undefined
     console.log(typeof message); // ReferenceError
     let message; // TDZ ends

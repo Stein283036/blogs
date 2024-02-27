@@ -14,7 +14,7 @@ function recurse() {
 }
 ```
 
-递归函数总是有一个停止调用自身的条件。否则，它将无限期地调用自己。因此，递归函数通常如下所示：
+递归函数总是有一个停止调用自身的条件。否则，它将无限期地调用自己。
 
 ```js
 function recurse() {
@@ -33,7 +33,7 @@ function recurse() {
 
 ### A simple JavaScript recursive function example
 
-假设需要开发一个从指定数字倒数到1的函数。例如，从3倒数到1：
+假设需要开发一个从指定数字倒数到 1 的函数。例如，从 3 倒数到 1：
 
 ```js
 function countDown(fromNumber) {
@@ -60,10 +60,3 @@ function sum(n) {
   return n + sum(n - 1);
 }
 ```
-
-
-
-
-
-
-

@@ -4,7 +4,7 @@
 
 JavaScript specifies the characteristics of properties of objects via internal **attributes** surrounded by the two pairs of square brackets, e.g., `[[Enumerable]]`.
 
-对象有两种类型的属性：数据属性和访问器属性（accessor properties）。
+对象有两种类型的属性：数据属性（data properties）和访问器属性（accessor properties）。
 
 ### Data properties
 
@@ -22,7 +22,7 @@ A data property contains a single location for a data value. A data property has
 
 默认情况下，直接在对象上定义的所有属性的 [[Configurable]] 、 [[Enumerable]] 和 [[Writable]] 属性设置为 true。 [[Value]] 属性的默认值为 undefined。
 
-例如，以下内容创建一个具有两个属性firstName和lastName的person对象，并将configurable、enumerable和writable属性设置为true，并将它们的值分别设置为“John”和“Doe”：
+例如，以下创建一个具有两个属性 firstName 和 lastName 的 person 对象，并将 configurable、enumerable 和 writable attributes 设置为 true，并将它们的值分别设置为 “John” 和 “Doe”：
 
 ```js
 let person = {
@@ -72,21 +72,7 @@ TypeError: Cannot delete property 'ssn' of #<Object>
 
 此外，一旦将属性定义为 non-configurable，就无法将其更改为 configurable。
 
-如果使用 Object.defineProperty() 方法更改除 writable 之外的任何属性，将收到错误。
-
-```js
-'use strict';
-let person = {};
-Object.defineProperty(person, 'ssn', {
-    configurable: false,
-    value: '012-38-9119'
-});
-Object.defineProperty(person, 'ssn', {
-    configurable: true
-});
-```
-
-默认情况下，对象上定义的所有属性的 enumerable 属性都是 true。这意味着可以使用 for...in 循环迭代所有对象属性，如下所示：
+默认情况下，对象上定义的所有属性的 enumerable 属性都是 true。这意味着可以使用 for...in 循环迭代所有对象属性：
 
 ```js
 let person = {};
@@ -120,13 +106,13 @@ age
 
 Similar to data properties, accessor properties also have `[[Configurable]]` and `[[Enumerable]]` attributes.
 
-**但访问器属性具有 [[Get]] 和 [[Set]] 属性，而不是 [[Value]] 和 [[Writable]]。**
+**但访问器属性具有 [[Get]] 和 [[Set]]，而不是 [[Value]] 和 [[Writable]]。**
 
 当从访问器属性读取数据时，会自动调用 [[Get]] 函数以返回值。 [[Get]] 函数的默认返回值是 undefined。
 
 如果将值分配给访问器属性，则会自动调用 [[Set]] 函数。
 
-要定义访问器属性，**必须**使用 Object.defineProperty() 方法。例如：
+要定义访问器属性，**必须**使用 Object.defineProperty() 方法。
 
 ```js
 let person = {
@@ -163,10 +149,10 @@ console.log(person.fullName); // 'John Doe'
 
 ## Define multiple properties: Object.defineProperties()
 
-在 ES5 中，可以使用 Object.defineProperties() 方法在`单个语句中定义多个属性。
+在 ES5 中，可以使用 Object.defineProperties() 方法在单个语句中定义多个属性。
 
 ```js
-var product = {};
+let product = {};
 Object.defineProperties(product, {
     name: {
         value: 'Smartphone'
@@ -213,4 +199,3 @@ enumerable: false
 get: ƒ ()
 set: undefined
 ```
-

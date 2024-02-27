@@ -4,7 +4,7 @@
 
 在 JavaScript 中，对象可以通过原型继承彼此的功能。每个对象都有自己的属性，称为 `prototype`。
 
-因为原型本身也是另一个对象，所以原型有自己的原型。这创建了一个称为原型链的东西。当原型的自身原型为空时，原型链结束。
+因为原型本身也是另一个对象，所以原型有自己的原型。这创建了一个称为原型链（prototype chain）的东西。当原型的自身原型为空时，原型链结束。
 
 假设有一个对象 person，其属性名为 name：
 
@@ -12,7 +12,7 @@
 let person = {'name' : 'John'}
 ```
 
-当在控制台中检查 person 对象时，您会发现 person 对象有一个名为 prototype 的属性，用 [[Prototype]] 表示：
+当在控制台中检查 person 对象时，会发现 person 对象有一个名为 prototype 的属性，用 [[Prototype]] 表示：
 
 ![img](D:\2024年\blogs\Web Dev\JavaScript\ECMAScript\04-Objects\assets\JavaScript-Prototype.png)
 
@@ -22,15 +22,15 @@ let person = {'name' : 'John'}
 
 ![img](D:\2024年\blogs\Web Dev\JavaScript\ECMAScript\04-Objects\assets\JavaScript-Prototype-object.png)
 
-当您访问对象的属性时，如果该对象具有该属性，它将返回该属性值。
+当访问对象的属性时，如果该对象具有该属性，它将返回该属性值。
 
-但是，如果您访问对象中不存在的属性，JavaScript 引擎将在该对象的原型中搜索。
+但是，如果访问对象中不存在的属性，JavaScript 引擎将在该对象的原型中搜索。
 
-如果 JavaScript 引擎在对象的原型中找不到该属性，它将在原型的原型中搜索，直到找到该属性或到达原型链的末尾。
+如果 JavaScript 引擎在对象的原型对象中找不到该属性，它将在原型的原型中搜索，直到找到该属性或到达原型链的末尾。
 
 ## JavaScript prototype illustration
 
-JavaScript 具有内置的 Object() 函数。如果将 Object 函数传递给 typeof 运算符，则它会返回“function”。例如：
+JavaScript 具有内置的 Object() 函数。如果将 Object 函数传递给 typeof 运算符，则它会返回“function”。
 
 ```js
 typeof(Object) // 'function'
@@ -111,9 +111,9 @@ let greeting = p1.greet();
 console.log(greeting);
 ```
 
-因为 p1 没有greet()方法，所以JavaScript遵循原型链接并在Person.prototype对象上找到它。
+因为 p1 没有greet()方法，所以 JavaScript 遵循原型链接并在 Person.prototype 对象上找到它。
 
-由于JavaScript可以在Person.prototype对象上找到greet()方法，因此它执行greet()方法并返回结果：
+由于 JavaScript 可以在 Person.prototype 对象上找到 greet() 方法，因此它执行 greet() 方法并返回结果：
 
 下面调用 p1 对象的 toString() 方法：
 
@@ -134,7 +134,7 @@ console.log(s);
 p1.fly();
 ```
 
-由于fly()方法不存在于原型链中的任何对象上，因此JavaScript引擎会发出以下错误：
+由于 fly() 方法不存在于原型链中的任何对象上，因此 JavaScript 引擎会发出以下错误：
 
 ```js
 TypeError: p1.fly is not a function
@@ -179,15 +179,15 @@ p1.draw()
 TypeError: p1.draw is not a function
 ```
 
-当您在对象中定义方法时，该方法仅对该对象可用。默认情况下它不能与其他对象共享。
+当在对象中定义方法时，该方法仅对该对象可用。默认情况下它不能与其他对象共享。
 
 ## Getting prototype linkage
 
 `__proto__` 发音为 dunder proto。 `__proto__` 是 Object.prototype 对象的访问器属性。它公开了访问它的对象的内部原型链接（[[Prototype]]）。
 
-`__proto__ `已在 ES6 中标准化，以确保与 Web 浏览器的兼容性。但是，将来可能会弃用它，转而使用 Object.getPrototypeOf()。因此，永远不应该在生产代码中使用 `__proto__`。
+`__proto__ ` 已在 ES6 中标准化，以确保与 Web 浏览器的兼容性。但是，将来可能会弃用它，转而使用 Object.getPrototypeOf()。因此，永远不应该在生产代码中使用 `__proto__`。
 
-`p1.__proto__ `公开引用 Person.prototype 对象的 [[Prototype]]。
+`p1.__proto__` 公开引用 Person.prototype 对象的 [[Prototype]]。
 
 同样，`p2.__proto__` 也引用与 `p1.__proto__` 相同的对象：
 
@@ -218,7 +218,7 @@ p1.constructor 返回 Person，因此 p1.constructor.prototype 返回原型对�
 console.log(p1.greet());
 ```
 
-p1 对象没有定义greet() 方法，因此JavaScript 会沿着原型链查找它。在这种情况下，它可以在 Person.prototype 对象中找到该方法。
+p1 对象没有定义 greet() 方法，因此 JavaScript 会沿着原型链查找它。在这种情况下，它可以在 Person.prototype 对象中找到该方法。
 
 让我们向对象 p1 添加一个与 Person.prototype 对象中的方法同名的新方法：
 
@@ -228,12 +228,12 @@ p1.greet = function() {
 }
 ```
 
-并调用greet()方法：
+并调用 greet() 方法：
 
 ```js
 console.log(p1.greet());
 ```
 
-因为p1对象有greet()方法，JavaScript只是立即执行它，而无需在原型链中查找它。
+因为 p1 对象有 greet() 方法，JavaScript 只是立即执行它，而无需在原型链中查找它。
 
-这是 shadowing 的一个例子。 p1 对象的greet() 方法隐藏了p1 对象引用的原型对象的greet() 方法。
+这是 shadowing 的一个例子。 p1 对象的 greet() 方法隐藏了 p1 对象引用的原型对象的 greet() 方法。

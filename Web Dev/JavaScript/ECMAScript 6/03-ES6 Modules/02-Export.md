@@ -93,7 +93,7 @@ export class Counter {
 }
 ```
 
-导入命名导出时，需要使用确切的名称并在 {} 中指定它们。例如，以下导入 Counter 类：
+导入命名导出时，需要使用确切的名称并在 {} 中指定它们。
 
 ```js
 import { Counter } from 'module.js';

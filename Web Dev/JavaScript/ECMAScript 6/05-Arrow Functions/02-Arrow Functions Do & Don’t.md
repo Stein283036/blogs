@@ -1,6 +1,6 @@
 # When You Should Not Use Arrow Functions
 
-箭头函数没有自己的 this 值和参数对象。因此，不应该将其用作事件处理程序、对象字面量的方法、原型方法，或者使用 arguments 对象的函数时。
+箭头函数没有自己的 this 值和参数对象。因此，不应该将其用作事件处理程序、对象字面量的方法、原型方法，或者使用 arguments 对象的函数。
 
 ## Event handlers
 
@@ -36,7 +36,7 @@ Hello undefined
 
 如前所述，箭头函数没有自己的 this 值。它使用封闭词法范围的 this 值。在上面的示例中，箭头函数中的 this 引用了全局对象。
 
-在网络浏览器中，全局对象是window。 window 对象没有 value 属性。因此，JavaScript 引擎将 value 属性添加到 window 对象并将其值设置为 undefined。
+在网络浏览器中，全局对象是 window。 window 对象没有 value 属性。因此，JavaScript 引擎将 value 属性添加到 window 对象并将其值设置为 undefined。
 
 要解决此问题，需要使用常规函数。 this 值将绑定到触发事件的 <input> 元素。
 

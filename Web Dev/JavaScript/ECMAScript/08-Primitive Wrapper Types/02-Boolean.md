@@ -38,7 +38,7 @@ let b = new Boolean(false);
 console.log(b.valueOf()); // false
 ```
 
-但是，如果您调用 Boolean 对象的 toString() 方法，将获得字符串值“true”或“false”。
+但是，如果调用 Boolean 对象的 toString() 方法，将获得字符串值“true”或“false”。
 
 ```js
 console.log(b.toString()); // "false"
@@ -72,7 +72,7 @@ console.log(typeof completed); // boolean
 console.log(typeof active); // object
 ```
 
-最好不要使用布尔对象，因为它会造成很多混乱，尤其是在表达式中使用时。例如：
+最好不要使用布尔对象，因为它会造成很多混乱，尤其是在表达式中使用时。
 
 ```js
 let falseObj = new Boolean(false);
@@ -82,32 +82,3 @@ if (falseObj) {
 ```
 
 使用 Boolean() 函数将不同类型的值转换为 boolean 值，但切勿将 Boolean 用作原始布尔值的包装对象。
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

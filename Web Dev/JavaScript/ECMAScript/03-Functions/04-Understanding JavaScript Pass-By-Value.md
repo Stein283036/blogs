@@ -6,8 +6,6 @@
 
 对函数内部参数所做的任何更改都不会反映函数外部的传递变量。换句话说，对参数所做的更改不会反映在函数外部。
 
-如果函数参数通过引用传递，则传递到函数中的变量的更改将反映在函数外部。这在 JavaScript 中是不可能的。
-
 ## Pass-by-value of primitives values
 
 ## Pass-by-value of reference values
@@ -54,6 +52,3 @@ console.log(person); // { name: 'John', age: 26 }
 ```
 
 person 引用仍然引用 age 属性更改为 26 的原始对象。换句话说，increaseAge() 函数不会更改 person 引用。
-
-
-

@@ -49,7 +49,7 @@ Finally, the JavaScript engine places the last call to the `console.log('Done!')
 
 ## Callbacks to the rescue
 
-为了防止阻塞函数阻塞其他活动，通常将其放入回调函数中以便稍后执行。例如：
+为了防止阻塞函数阻塞其他活动，通常将其放入回调函数中以便稍后执行。
 
 ```js
 console.log('Start script...');

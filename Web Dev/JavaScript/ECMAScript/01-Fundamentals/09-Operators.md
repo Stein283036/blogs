@@ -14,23 +14,17 @@
 let x = '10',
     y = '20';
 let result = x + y;
-
-console.log(result);
-1020
+console.log(result); // 1020
 ```
 
 ```js
 let result = 10 + '20';
-
-console.log(result);
-1020
+console.log(result); // 1020
 ```
-
-下表显示了对特殊数字使用加法运算符时的结果：
 
 ### Subtraction operator (-)
 
-如果值是字符串、布尔值、null 或未定义，JavaScript 引擎将： 
+如果值是 string、boolean、null 或 undefined，JavaScript 引擎将： 
 
 - 首先，使用 Number() 函数将值转换为数字。 
 - 其次，进行减法。
@@ -43,12 +37,10 @@ JavaScript 使用星号 (*) 来表示乘法运算符。乘法运算符将两个�
 
 ```js
 let result = 2 * 3;
-console.log(result);
-6
+console.log(result); // 6
 
 let result = '5' * 2;
-console.log(result);
-10
+console.log(result); // 10
 ```
 
 ### Divide operator (/)
@@ -64,7 +56,7 @@ console.log(result); // 10;
 
 ### Using JavaScript arithmetic operators with objects
 
-如果一个值是一个对象，JavaScript引擎会调用该对象的valueOf()方法来获取该值进行计算。例如：
+如果一个值是一个对象，JavaScript 引擎会调用该对象的 valueOf() 方法来获取该值进行计算。
 
 ```js
 let energy = {
@@ -72,27 +64,17 @@ let energy = {
     return 100;
   },
 };
-
 let currentEnergy = energy - 10;
-console.log(currentEnergy);
-
+console.log(currentEnergy); // 90
 currentEnergy = energy + 100;
-console.log(currentEnergy);
-
+console.log(currentEnergy); // 200
 currentEnergy = energy / 2;
-console.log(currentEnergy);
-
+console.log(currentEnergy); // 50
 currentEnergy = energy * 1.5;
-console.log(currentEnergy);
-
-// 输出
-90
-200
-50
-150
+console.log(currentEnergy); // 150
 ```
 
-如果对象没有 valueOf() 方法，但有 toString() 方法，JavaScript 引擎将调用 toString() 方法来获取值进行计算。例如：
+如果对象没有 valueOf() 方法，但有 toString() 方法，JavaScript 引擎将调用 toString() 方法来获取值进行计算。
 
 ```js
 let energy = {
@@ -100,24 +82,14 @@ let energy = {
     return 50;
   },
 };
-
 let currentEnergy = energy - 10;
 console.log(currentEnergy);
-
 currentEnergy = energy + 100;
 console.log(currentEnergy);
-
 currentEnergy = energy / 2;
 console.log(currentEnergy);
-
 currentEnergy = energy * 1.5;
 console.log(currentEnergy);
-
-// 输出
-40
-150
-25
-75
 ```
 
 ## Remainder Operator
@@ -129,8 +101,6 @@ JavaScript 使用 % 来表示余数运算符。余数运算符返回一个值除
 ## Assignment Operators
 
 赋值运算符 (=) 将值赋给变量。
-
-下表说明了赋值运算符，它们是另一个运算符和赋值的简写：
 
 ### Chaining JavaScript assignment operators
 
@@ -157,9 +127,9 @@ a = b; // a is also 30
 | +x              | Unary Plus                   | Convert a value into a number               |
 | -x              | Unary Minus                  | Convert a value into a number and negate it |
 | ++x             | Increment Operator (Prefix)  | Add one to the value                        |
-| –x              | Decrement Operator (Prefix)  | Subtract one from the value                 |
+| –-x             | Decrement Operator (Prefix)  | Subtract one from the value                 |
 | x++             | Increment Operator (Postfix) | Add one to the value                        |
-| x–              | Decrement Operator (Postfix) | Subtract one from the value                 |
+| x–-             | Decrement Operator (Postfix) | Subtract one from the value                 |
 
 ### Unary plus (+)
 
@@ -167,11 +137,13 @@ a = b; // a is also 30
 
 当将一元加运算符应用于非数字值时，它会使用 Number() 函数按照下表中的规则执行数字转换：
 
-| Value   | Result                                                       |
-| :------ | :----------------------------------------------------------- |
-| boolean | `false` to `0`, `true` to `1`                                |
-| string  | Convert the string value based on a set of specific rules    |
-| object  | Call the `valueOf()` and/or `toString()` method to get the value to convert into a number |
+| Value     | Result                                                       |
+| :-------- | :----------------------------------------------------------- |
+| boolean   | `false` to `0`, `true` to `1`                                |
+| string    | Convert the string value based on a set of specific rules    |
+| object    | Call the `valueOf()` and/or `toString()` method to get the value to convert into a number |
+| null      | 0                                                            |
+| undefined | NaN                                                          |
 
 ```js
 let s = '10';
@@ -219,13 +191,15 @@ console.log(y); // -10
 
 增量运算符有两个加号 (++)，减量运算符有两个减号 (--)。
 
-自增和自减运算符都有两个版本：前缀和后缀。您可以将增量或减量运算符的前缀和后缀版本放置在它们所应用的变量之前和之后。
+自增和自减运算符都有两个版本：前缀和后缀。
 
 前缀递增或递减运算符在计算语句前更改值。
 
 后缀递增或递减运算符在计算语句后更改值。
 
 ## Comparison Operators
+
+`> >= < <= == === != !==`
 
 A comparison operator returns a Boolean value indicating whether the comparison is true or not. See the following example:
 
@@ -237,9 +211,21 @@ let r3 = 10 == 10; // true
 
 比较运算符采用两个值。如果值的类型不可比较，则比较运算符根据特定规则将它们转换为可比较类型的值。
 
+对不同类型的值进行相等检查时，运算符 `==` 会将不同类型的值转换为数字（除了 `null` 和 `undefined`，它们彼此相等而没有其他情况）。
+
+其他比较也将转换为数字。
+
+严格相等运算符 `===` 不会进行转换：不同的类型总是指不同的值。
+
+值 `null` 和 `undefined` 是特殊的：它们只在 `==` 下相等，且不相等于其他任何值。
+
+NaN 不等于任何值包括它本身，可以使用 `Number.isNaN()` 方法比较是否为 `NaN`。
+
+大于/小于比较，在比较字符串时，会按照字符顺序逐个字符地进行比较。其他类型则被转换为数字。
+
 ### Compare numbers
 
-If values are numbers, the comparison operators perform a numeric comparison. For example:
+If values are numbers, the comparison operators perform a numeric comparison.
 
 ```js
 let a = 10, 
@@ -251,7 +237,7 @@ console.log(a == 10); // true
 
 ### Compare strings
 
-如果操作数是字符串，JavaScript 会按照数字方式对字符串中的字符代码（Unicode 马店）进行一一比较。
+如果操作数是字符串，JavaScript 会按照数字方式对字符串中的字符代码（Unicode code point）进行一一比较。
 
 ```js
 let name1 = 'alice',
@@ -264,7 +250,7 @@ console.log(name1 == 'alice'); // true
 
 ### Compare a number with a value of another type
 
-如果一个值是数字而另一个不是数字，则比较运算符会将非数字值转换为数字，然后对它们进行数字比较。例如：
+如果一个值是数字而另一个不是数字，则比较运算符会将非数字值转换为数字，然后对它们进行数字比较。
 
 ```js
 console.log(10 < '20'); // true
@@ -322,9 +308,9 @@ console.log("10" == 10); // true
 console.log("10" === 10); // false
 ```
 
-在第一个比较中，由于我们使用了相等运算符，JavaScript 将字符串转换为数字并执行比较。
+在第一个比较中，由于使用了相等运算符，JavaScript 将字符串转换为数字并执行比较。
 
-然而，在第二次比较中，我们使用了严格等于运算符（ ===），JavaScript 在比较之前不会转换字符串，因此结果为 false。
+然而，在第二次比较中，使用了严格等于运算符（ ===），JavaScript 在比较之前不会转换字符串，因此结果为 false。
 
 ## Logical Operators
 
@@ -367,7 +353,7 @@ console.log(!true); //false
 
 The `!!` uses the logical NOT operator (`!`) twice to convert a value to its real boolean value.
 
-The result is the same as using the Boolean() function. For example:
+The result is the same as using the Boolean() function.
 
 ```js
 let counter = 10;
@@ -382,11 +368,11 @@ JavaScript uses the double ampersand (`&&`) to represent the logical AND operato
 let result = a && b;
 ```
 
-如果a可以转换为true，&&运算符返回b；否则，返回 a。事实上，这条规则适用于所有布尔值。
+如果 a 可以转换为 true，&& 运算符返回 b；否则，返回 a。事实上，这条规则适用于所有布尔值。
 
 #### Short-circuit evaluation
 
-&& 运算符被短路。这意味着仅当第一个值不足以确定表达式的值时，&& 运算符才会计算第二个值。例如：
+&& 运算符被短路。这意味着仅当第一个值不足以确定表达式的值时，&& 运算符才会计算第二个值。
 
 ```js
 let b = true;
@@ -416,7 +402,7 @@ The `&&` operator carries the following:
 
 - Evaluates values from left to right.
 - For each value, convert it to a boolean. If the result is `false`, stops and returns the original value.
-- If all values are truthy values, return the last value.
+- If all values are **truthy values**, return the last value.
 
 In other words, The `&&` operator returns the first falsy value or the last value if none were found.
 
@@ -432,7 +418,7 @@ let result = a || b;
 
 If `a` can be converted to `true`, returns `a`; else, returns `b`. This rule is also applied to boolean values.
 
-The `||` operator returns `false` if both values evaluate to `false`. In case either value is `true`, the `||` operator returns `true`. For example:
+The `||` operator returns `false` if both values evaluate to `false`. In case either value is `true`, the `||` operator returns `true`.
 
 ```js
 let eligible = true,
@@ -459,125 +445,9 @@ The `||` operator does the following:
 
 In other words, the chain of the `||` operators returns the first truthy value or the last one if no truthy value was found.
 
-### Logical operator precedence
-
-当您在表达式中混合逻辑运算符时，JavaScript 引擎会根据指定的顺序计算运算符。这种顺序称为运算符优先级。
-
-The precedence of the logical operator is in the following order from the highest to the lowest:
-
-1. Logical NOT (!)
-2. Logical AND (&&)
-3. Logical OR (||)
-
-## Logical Assignment Operators
-
-ES2021 introduces three logical assignment operators including:
-
-- Logical OR assignment operator (`||=`)
-- Logical AND assignment operator (`&&=`)
-- Nullish coalescing assignment operator (`??=`)
-
-The following table shows the equivalent of the logical assignments operator:
-
-| Logical Assignment Operators | Logical Operators |
-| :--------------------------- | :---------------- |
-| x \|\|= y                    | x \|\| (x = y)    |
-| x &&= y                      | x && (x = y)      |
-| x ??= y                      | x ?? (x = y);     |
-
-### The Logical OR assignment operator
-
-The logical OR assignment operator (`||=`) accepts two operands and assigns the right operand to the left operand if the left operand is falsy:
-
-```js
-x ||= y
-```
-
-In this syntax, the `||=` operator only assigns `y` to `x` if `x` is falsy. For example:
-
-```js
-let title;
-title ||= 'untitled';
-
-console.log(title); // untitled
-```
-
-```js
-let title = 'JavaScript Awesome';
-title ||= 'untitled';
-
-console.log(title); // JavaScript Awesome
-```
-
-Like the logical OR operator, the logical OR assignment also short-circuits. It means that the logical OR assignment operator only performs an assignment when the `x` is falsy.
-
-The following example uses the logical assignment operator to display a default message if the search result element is empty:
-
-```js
-document.querySelector('.search-result').textContent ||= 'Sorry! No result found';
-```
-
-### The Logical AND assignment operator
-
-The logical AND assignment operator only assigns `y` to `x` if `x` is truthy:
-
-```js
-x &&= y;
-```
-
-The logical AND assignment operator also short-circuits. It means that
-
-```js
-x &&= y;
-```
-
-is equivalent to:
-
-```js
-x && (x = y);
-```
-
-The following example uses the logical AND assignment operator to change the last name of a `person` object if the last name is truthy:
-
-```js
-let person = {
-    firstName: 'Jane',
-    lastName: 'Doe',
-};
-
-person.lastName &&= 'Smith';
-
-console.log(person); // {firstName: 'Jane', lastName: 'Smith'}
-```
-
-### The nullish coalescing assignment operator
-
-如果 x 为 null 或 undefined，则 nullish 合并赋值运算符仅将 y 赋值给 x：
-
-```js
-x ??= y;
-```
-
-It’s equivalent to the following statement that uses the nullish coalescing operator:
-
-```js
-x ?? (x = y);
-```
-
-The following example uses the nullish coalescing assignment operator to add a missing property to an object:
-
-```js
-let user = {
-    username: 'Satoshi'
-};
-user.nickname ??= 'anonymous';
-
-console.log(user); // {username: 'Satoshi', nickname:'anonymous'}
-```
-
 ## Exponentiation Operator
 
-static method `Math.pow()`
+static method `Math.pow()`:
 
 ```js
 Math.pow(base, exponent)
@@ -595,9 +465,6 @@ The following example causes a syntax error:
 
 ```js
 let result = -2**3;
-```
-
-```js
 Uncaught SyntaxError: Unary operator used immediately before exponentiation expression. Parenthesis must be used to disambiguate operator precedence
 ```
 
@@ -608,7 +475,7 @@ let result = (-2)**3;
 console.log(result); // -8
 ```
 
-## Ternary Operator (:?)
+## Ternary Operator (?:)
 
 ### Introduction to JavaScript ternary operator
 
@@ -617,10 +484,8 @@ In this example, we show a message that a person can drive if the age is greater
 ```js
 let age = 18;
 let message;
-
 age >= 16 ? (message = 'You can drive.') : (message = 'You cannot drive.');
-
-console.log(message);
+console.log(message); // You can drive.
 ```
 
 Or you can use the ternary operator in an expression as follows:
@@ -628,9 +493,7 @@ Or you can use the ternary operator in an expression as follows:
 ```js
 let age = 18;
 let message;
-
 message = age >= 16 ? 'You can drive.' : 'You cannot drive.';
-
 console.log(message);
 ```
 
@@ -652,20 +515,6 @@ let variableName = condition ? expressionIfTrue : expressionIfFalse;
 
 ### JavaScript ternary operator examples
 
-#### Using the JavaScript ternary operator to perform multiple statements
-
-```js
-let authenticated = true;
-let nextURL = authenticated
-  ? (alert('You will redirect to admin area'), '/admin')
-  : (alert('Access denied'), '/403');
-
-// redirect to nextURL here
-console.log(nextURL); // '/admin'
-```
-
-In this example, the returned value of the ternary operator is the last value in the comma-separated list.
-
 #### Using multiple JavaScript ternary operators example
 
 The following example shows how to use two ternary operators in the same expression:
@@ -685,7 +534,7 @@ It’s a good practice to use the ternary operator when it makes the code easier
 
 如果构造函数的原型 (constructor.prototype) 出现在对象的原型链中，instanceof 运算符将返回 true。
 
-下面显示了instanceof运算符的语法：
+下面显示了 instanceof 运算符的语法：
 
 ```js
 object instanceof contructor
@@ -695,8 +544,6 @@ object instanceof contructor
 
 - object 是要测试的对象。
 - 构造函数是一个要测试的函数。
-
-### JavaScript instanceof operator example
 
 以下示例定义了 Person 类型并使用 instanceof 运算符来检查对象是否是该类型的实例：
 
@@ -710,7 +557,7 @@ let p1 = new Person('John');
 console.log(p1 instanceof Person); // true
 ```
 
-它返回 true，因为 Person.prototype 出现在 p1 对象的原型链上。 p1的原型链是p1、Person.prototype和Object.prototype之间的链接：
+它返回 true，因为 Person.prototype 出现在 p1 对象的原型链上。 p1 的原型链是 p1、Person.prototype 和 Object.prototype 之间的链接：
 
 <img src="https://www.javascripttutorial.net/wp-content/uploads/2022/01/JavaScript-instanceof.svg" alt="img" style="zoom:80%;" />
 
@@ -740,7 +587,7 @@ console.log(p1 instanceof Person); // true
 
 以下示例定义了扩展 Person 类的 Employee 类：
 
-```jsclass Person {
+```javascript
 class Person {
   constructor(name) {
     this.name = name;
@@ -765,7 +612,7 @@ console.log(e1 instanceof Object); // true
 
 ### Symbol.hasInstance
 
-在 ES6 中，instanceof 运算符使用 Symbol.hasInstance 函数来检查关系。Symbol.hasInstance() 接受一个对象，如果类型将该对象作为实例，则返回 true。例如：
+在 ES6 中，instanceof 运算符使用 Symbol.hasInstance 函数来检查关系。Symbol.hasInstance() 接受一个对象，如果类型将该对象作为实例，则返回 true。
 
 ```js
 class Person {

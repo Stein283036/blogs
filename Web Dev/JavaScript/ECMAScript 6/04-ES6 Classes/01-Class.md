@@ -93,26 +93,3 @@ class Person {
 let john = Person("John Doe");
 Uncaught TypeError: Class constructor Person cannot be invoked without 'new'
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

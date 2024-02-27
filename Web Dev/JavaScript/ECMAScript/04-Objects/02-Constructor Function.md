@@ -4,12 +4,14 @@
 
 可以使用构造函数来定义自定义类型，并使用 new 运算符从该类型创建多个对象。
 
-从技术上讲，构造函数是具有以下约定的常规函数：
+从技术上讲，任何函数（除了箭头函数，它没有自己的 `this`）都可以用作构造器。即可以通过 `new` 来运行，它会执行上面的算法。“首字母大写”是一个共同的约定，以明确表示一个函数将被使用 `new` 来运行。
+
+构造函数是具有以下约定的常规函数：
 
 - 构造函数的名称以大写字母开头，如 Person、Document 等。
 - 构造函数只能使用 new 运算符调用。
 
-请注意，ES6 引入了 class 关键字，允许定义自定义类型。**类只是构造函数的语法糖，具有一些增强功能。**
+注意，ES6 引入了 class 关键字，允许定义自定义类型。**类只是构造函数的语法糖，具有一些增强功能。**
 
 以下示例定义了一个名为 Person 的构造函数：
 
@@ -20,7 +22,7 @@ function Person(firstName, lastName) {
 }
 ```
 
-要创建 Person 的新实例，请使用 new 运算符：
+要创建 Person 的新实例，使用 new 运算符：
 
 ```js
 let person = new Person('John','Doe');
@@ -28,8 +30,8 @@ let person = new Person('John','Doe');
 
 基本上，new 运算符执行以下操作：
 
-- 创建一个新的空对象并将其分配给 this 变量。
-- 将参数“John”和“Doe”分配给对象的firstName 和lastName 属性。
+- 创建一个新的空对象 {} 并将其分配给 this。
+- 函数体执行。通常它会修改 `this`，为其添加新的属性，将参数“John”和“Doe”分配给对象的 firstName 和 lastName 属性。
 - 返回 this 值。
 
 它在功能上等同于以下内容：
@@ -44,9 +46,19 @@ function Person(firstName, lastName) {
 }
 ```
 
+顺便说一下，如果没有参数，可以省略 `new` 后的括号：
+
+```javascript
+let user = new User; // <-- 没有参数
+// 等同于
+let user = new User();
+```
+
+这里省略括号不被认为是一种“好风格”，但是规范允许使用该语法。
+
 ## Adding methods to JavaScript constructor functions
 
-对象可能具有操作其数据的方法。要向通过构造函数创建的对象添加方法，可以使用 this 关键字。例如：
+对象可能具有操作其数据的方法。要向通过构造函数创建的对象添加方法，可以使用 this 关键字。
 
 ```js
 function Person(firstName, lastName) {
@@ -66,7 +78,7 @@ let person = new Person("John", "Doe");
 console.log(person.getFullName()); // John Doe
 ```
 
-构造函数的问题在于，当创建 Person 的多个实例时， this.getFullName() 会在每个实例中重复，这样内存效率不高。
+构造函数的问题在于，当创建 Person 的多个实例时， this.getFullName() 会在每个实例中重复（不共享），这样内存效率不高。
 
 要解决此问题，可以使用原型，以便自定义类型的所有实例都可以共享相同的方法。
 
@@ -76,6 +88,8 @@ console.log(person.getFullName()); // John Doe
 
 - 如果使用对象调用 return，构造函数将返回该对象而不是 this。
 - 如果使用对象以外的值调用 return，则该值将被忽略。
+
+换句话说，带有对象的 `return` 返回该对象，在所有其他情况下返回 `this`。
 
 ## Calling a constructor function without the `new` keyword
 
@@ -87,7 +101,7 @@ let person = Person('John','Doe');
 
 在这种情况下，Person 只是像常规函数一样执行。因此，Person 函数中的 this 并不绑定到 person 变量，而是绑定到全局对象。
 
-如果尝试访问firstName或lastName属性，将收到错误：
+如果尝试访问 firstName 或 lastName 属性，将收到错误：
 
 ```js
 console.log(person.firstName);
@@ -115,7 +129,7 @@ function Person(firstName, lastName) {
 }
 ```
 
-以下返回未定义，因为 Person 构造函数的调用方式与常规函数类似：
+以下返回 undefined，因为 Person 构造函数的调用方式与常规函数类似：
 
 ```js
 let person = Person("John", "Doe"); // undefined
@@ -127,7 +141,7 @@ let person = Person("John", "Doe"); // undefined
 let person = new Person("John", "Doe"); // [Function: Person]
 ```
 
-通过使用 new.target，您可以强制构造函数的调用者使用 new 关键字。否则，可能会抛出如下错误：
+通过使用 new.target，可以强制构造函数的调用者使用 new 关键字。
 
 ```js
 function Person(firstName, lastName) {
@@ -158,34 +172,3 @@ console.log(person.firstName);
 ```
 
 这种模式经常用于 JavaScript 库和框架中，以使语法更加灵活。
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

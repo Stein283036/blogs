@@ -1,12 +1,12 @@
 # JavaScript Default Parameters
 
-在 JavaScript 中，如果没有值或未定义传递到函数中，默认函数参数允许使用默认值初始化命名参数。
+在 JavaScript 中，如果没有值或 `undefined` 传递到函数中，默认函数参数允许使用默认值初始化命名参数。
 
 ## Setting JavaScript default parameters for a function
 
-在 JavaScript 中，参数的默认值是未定义的。这意味着，如果不将参数传递给函数，则其参数的默认值将是 undefined。
+在 JavaScript 中，参数的默认值是 `undefined`。这意味着，如果不将参数传递给函数，则其参数的默认值将是 undefined。
 
-假设要为消息参数指定默认值 10。
+假设要为 message 参数指定默认值 'Hi'。
 
 实现此目的的典型方法是使用三元运算符测试参数值并分配默认值（如果未定义）：
 
@@ -18,14 +18,14 @@ function say(message) {
 say(); // 'Hi'
 ```
 
-ES6 为提供了一种更简单的方法来设置函数参数的默认值，如下所示：
+ES6 提供了一种更简单的方法来设置函数参数的默认值，如下所示：
 
 ```js
 function fn(param1=default1, param2=default2,..) {
 }
 ```
 
-在上面的语法中，可以使用赋值运算符 (=) 和参数名称后面的默认值来设置该参数的默认值。例如：
+在上面的语法中，可以使用赋值运算符 (=) 和参数名称后面的默认值来设置该参数的默认值。
 
 ```js
 function say(message='Hi') {
@@ -39,7 +39,7 @@ say('Hello'); // 'Hello'
 
 ### Using functions
 
-您可以使用函数的返回值作为参数的默认值。例如：
+可以使用函数的返回值作为参数的默认值。
 
 ```js
 let taxRate = () => 0.1;
@@ -53,7 +53,7 @@ console.log(fullPrice); // 110
 
 ### The arguments object
 
-函数内 arguments 对象的值是传递给函数的实际参数的数量。例如：
+函数内 arguments 对象的值是传递给函数的实际参数的数量。
 
 ```js
 function add(x, y = 1, z = 2) {
@@ -65,16 +65,3 @@ add(10); // 1
 add(10, 20); // 2
 add(10, 20, 30); // 3
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-

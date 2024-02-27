@@ -71,7 +71,7 @@ console.log(z); // 90
 可以使用 rest parameter (...) 获取数组的所有剩余元素并将它们放入新数组中：
 
 ```js
-let [x, y ,...args] = getScores();
+let [x, y, ...args] = getScores();
 console.log(x); // 70
 console.log(y); // 80
 console.log(args); // [90, 100]
@@ -88,7 +88,7 @@ let [, , z = 30] = getItems();
 console.log(z); // 30
 ```
 
-如果 getItems() 函数不返回数组而，则解构赋值将导致错误：
+如果 getItems() 函数不返回数组，则解构赋值将导致错误：
 
 ```js
 function getItems() {

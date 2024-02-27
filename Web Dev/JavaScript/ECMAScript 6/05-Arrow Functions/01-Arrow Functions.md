@@ -75,7 +75,7 @@ console.log(numbers); // [6,4,2]
 (p1) => { statements }
 ```
 
-注意，您可以省略括号，如下所示：
+注意，可以省略括号，如下所示：
 
 ```js
 p => { statements }
@@ -179,7 +179,7 @@ let setColor = color => ({value: color });
 
 ### JavaScript arrow functions and `this` value
 
-在 JavaScript 中，一个新函数定义了自己的 this 值。然而，箭头函数的情况并非如此。例如：
+在 JavaScript 中，一个新函数定义了自己的 this 值。然而，箭头函数的情况并非如此。
 
 ```js
 function Car() {
@@ -195,7 +195,7 @@ let car = new Car();
 car.speedUp(50);
 ```
 
-在setTimeout()函数的匿名函数中，this.speed是 undefined。原因是匿名函数的 this 遮盖了 speedUp() 方法的 this，因为匿名函数中的 this 指向全局对象。
+在setTimeout()函数的匿名函数中，this.speed 是 undefined。原因是匿名函数的 this 遮盖了 speedUp() 方法的 this，因为匿名函数中的 this 指向全局对象。
 
 要解决此问题，可以将 this 值分配给一个不在匿名函数内部隐藏的变量，如下所示：
 
@@ -214,7 +214,7 @@ let car = new Car();
 car.speedUp(50); // 50;
 ```
 
-与匿名函数不同，箭头函数捕获封闭上下文（enclosing context）的 this 值，而不是创建自己的 this 上下文。以下代码应该按预期工作：
+与匿名函数不同，箭头函数捕获封闭上下文（enclosing context）的 this 值，而不是创建自己的 this 上下文。
 
 ```js
 function Car() {
@@ -232,7 +232,7 @@ car.speedUp(50); // 50;
 
 ### JavaScript arrow functions and the arguments object
 
-箭头函数没有 arguments 对象。例如：
+箭头函数没有 arguments 对象。
 
 ```js
 function show() {

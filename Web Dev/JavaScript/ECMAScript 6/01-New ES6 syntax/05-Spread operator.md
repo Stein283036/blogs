@@ -26,7 +26,7 @@ f(1, 2, 3, 4, 5); // [ 3, 4, 5 ]
 
 主要区别：
 
-- spread operator 解包**可迭代对象（iterable object）**的元素。
+- spread operator 解包 **可迭代对象（iterable object）**的元素。
 - rest parameter 将元素打包到数组中。
 
 rest parameter 必须是函数的最后一个参数。然而，扩展运算符可以在任何地方：
@@ -118,46 +118,3 @@ console.log(copiedScores); // [80, 70, 90]
 let chars = ['A', ...'BC', 'D'];
 console.log(chars); // ["A", "B", "C", "D"]
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

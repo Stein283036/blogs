@@ -1,4 +1,4 @@
-JavaScript String Type
+# JavaScript String Type
 
 ## Introduction to JavaScript String type
 

@@ -1,6 +1,6 @@
 # Data Types
 
-原始数据类型：
+Primitive data types:
 
 - null
 - undefined
@@ -10,13 +10,20 @@
 - symbol – available from ES2015
 - bigint – available from ES2020
 
-引用数据类型：
+Complex data type:
 
 - object
 
 ## typeof
 
 `typeof` 运算符用来确定变量存储的值的类型。
+
+有两个例外：
+
+```javascript
+typeof null == "object" // JavaScript 编程语言的设计错误
+typeof function(){} == "function" // 函数被特殊对待
+```
 
 ## The undefined type
 
@@ -26,13 +33,6 @@ The `undefined` type is a primitive type that has only one value `undefined`. By
 let counter;
 console.log(counter);        // undefined
 console.log(typeof counter); // undefined
-```
-
-需要注意的是，当您在尚未声明的变量上调用 typeof 运算符时，它也会返回 undefined：
-
-```js
-let obj = null;
-console.log(typeof obj); // object
 ```
 
 ## The null type
@@ -46,7 +46,7 @@ console.log(typeof obj); // object
 
 typeof null 返回 object 是 JavaScript 中的一个已知错误。由于可能破坏许多现有站点，修复提案被拒绝。
 
-JavaScript 定义 null 等于 undefined，如下所示：
+JavaScript 定义 null 等于 undefined：
 
 ```js
 console.log(null == undefined); // true
@@ -145,7 +145,7 @@ let str = "Good Morning!";
 console.log(str.length);  // 13
 ```
 
-请注意，JavaScript 具有 String 类型（字母 S 大写），它是原始字符串类型的原始包装类型。因此，您可以从原始字符串访问 String 类型的所有属性和方法。
+请注意，JavaScript 具有 String 类型（字母 S 大写），它是原始字符串类型的原始包装类型。因此，可以从原始字符串访问 String 类型的所有属性和方法。
 
 要**访问**字符串中的字符，可以使用类似数组的 [] 表示法和从零开始的索引。
 
@@ -190,14 +190,14 @@ console.log(typeof completed); // boolean
 
 JavaScript 允许将其他类型的值转换为 true 或 false 的布尔值。
 
-要将其他类型的值转换为布尔值，请使用 Boolean() 函数。
+要将其他类型的值转换为布尔值，使用 Boolean() 函数。
 
 转换规则：
 
 | Type      | true                         | false        |
 | :-------- | :--------------------------- | :----------- |
 | string    | non-empty string             | empty string |
-| number    | non-zero number and Infinity | 0, NaN       |
+| number    | non-zero number and Infinity | 0, 0.0, NaN  |
 | object    | non-null object              | null         |
 | undefined |                              | undefined    |
 
@@ -214,15 +214,11 @@ if (error) {
 An error occurred
 ```
 
-
-
-
-
 ## The symbol type
 
 JavaScript 在 ES6 中引入了一种新的原始类型：symbol。与其他基本类型不同，符号类型没有字面形式。
 
-要创建符号，请调用 Symbol 函数：
+要创建符号，调用 Symbol 函数：
 
 ```js
 let s1 = Symbol();
@@ -236,7 +232,7 @@ console.log(Symbol() == Symbol()); // false
 
 ## The bigint type
 
-bigint 类型表示大于 2^53^ – 1 的整数。要形成 bigint 文字数字，在数字末尾附加字母 n：
+bigint 类型表示大于 2^53^ – 1 或小于 -(2^53^ – 1) 的整数。
 
 ```js
 let pageView = 9007199254740991n;
@@ -245,11 +241,11 @@ console.log(typeof(pageView)); // 'bigint'
 
 ## The object type
 
-在 JavaScript 中，对象是属性的集合，其中每个属性都定义为键值对，键必须是 string 类型，值可以是其它合法的数据类型。
+在 JavaScript 中，对象是属性的集合，其中每个属性都定义为键值对，键必须是 string 或者 symbol 类型，值可以是其它合法的数据类型。
 
 对象的属性名称可以是任何字符串。如果属性名称不是有效标识符，则可以在属性名称周围使用引号。
 
-例如，如果 person 对象具有属性first-name，则必须将其放在引号中，例如“first-name”。
+例如，如果 person 对象具有属性 first-name，则必须将其放在引号中，例如 “first-name”。
 
 对象字面量语法创建对象：
 
@@ -297,40 +293,3 @@ console.log(contact['email']); // 'john.doe@example.com'
 ```js
 console.log(contact.age); // undefined
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

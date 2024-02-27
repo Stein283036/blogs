@@ -15,7 +15,7 @@
 
 假设要定义一个名为 Person 的自定义类型，它具有：
 
-- 两个属性firstName 和lastName。
+- 两个属性 firstName 和 lastName。
 - 一个方法 getFullName()。
 
 首先，使用构造函数初始化属性：
@@ -36,7 +36,7 @@ Person 函数具有引用匿名对象的原型属性。匿名对象有一个引�
 
 ![JS prototype- Person prototype](https://www.javascripttutorial.net/wp-content/uploads/2022/01/JS-prototype-Person-prototype.svg)
 
-其次，在Person函数的原型对象中定义getFullName()方法：
+其次，在 Person 函数的原型对象中定义 getFullName() 方法：
 
 ```js
 Person.prototype.getFullName = function() {
@@ -61,13 +61,13 @@ console.log(p2.getFullName());
 'Jane Doe'
 ```
 
-Javascript 创建两个对象 p1 和 p2。这些对象通过 [[Prototype]] 链接链接到 Person.prototype 对象：
+Javascript 创建两个对象 p1 和 p2。这些对象通过 [[Prototype]] 链接到 Person.prototype 对象：
 
 ![img](https://www.javascripttutorial.net/wp-content/uploads/2022/01/JavaScript-constructor-prototype-pattern-example.svg)
 
-每个对象都有自己的属性firstName 和lastName。但是，它们共享相同的 getFullName() 方法。
+每个对象都有自己的属性 firstName 和 lastName。但是，它们共享相同的 getFullName() 方法。
 
-当您对 p1 或 p2 对象调用 getFullName() 方法时，JavaScript 引擎会搜索这些对象的方法。因为 JavaScript 引擎在那里找不到该方法，所以它遵循原型链接并在 Person.prototype 对象中搜索该方法。
+当对 p1 或 p2 对象调用 getFullName() 方法时，JavaScript 引擎会搜索这些对象的方法。因为 JavaScript 引擎在那里找不到该方法，所以它遵循原型链接并在 Person.prototype 对象中搜索该方法。
 
 ## Classes in ES6
 

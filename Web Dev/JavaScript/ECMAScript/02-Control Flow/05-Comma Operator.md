@@ -42,12 +42,3 @@ for (let i = 0, j = 1; i < board.length; i++, j++) {
 4 5 6
 7 8 9
 ```
-
-
-
-
-
-
-
-
-

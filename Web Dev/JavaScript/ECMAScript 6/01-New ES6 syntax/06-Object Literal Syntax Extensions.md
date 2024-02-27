@@ -4,7 +4,7 @@
 
 ## Object property initializer shorthand
 
-在 ES6 之前，对象字面量是名称-值对的集合。例如：
+在 ES6 之前，对象字面量是名称-值对的集合。
 
 ```js
 function createMachine(name, status) {
@@ -32,7 +32,7 @@ function createMachine(name, status) {
 
 在内部，当对象字面量的属性只有名称时，JavaScript 引擎会在周围范围内搜索具有相同名称的变量。如果 JavaScript 引擎可以找到一个，它就会将该变量的值分配给该属性。
 
-同样，可以从局部变量构造对象文字，如下例所示：
+同样，可以从局部变量构造对象字面量，如下例所示：
 
 ```js
 let name = 'Computer',
@@ -62,7 +62,7 @@ console.log(machine['machine hours']); // 10000
 
 在 ES6 中，计算属性名称是对象字面量语法的一部分，并且使用方括号表示法。
 
-当属性名称放在方括号内时，JavaScript 引擎将其作为字符串进行计算。这意味着可以使用表达式作为属性名称。例如：
+当属性名称放在方括号内时，JavaScript 引擎将其作为字符串进行计算。这意味着可以使用表达式作为属性名称。
 
 ```js
 let prefix = 'machine';
@@ -79,7 +79,7 @@ The `machine` object’s properties evaluated to `'machine name'` and `'machine 
 
 ## Concise method syntax
 
-在 ES6 之前，为对象字面量定义方法时，需要指定名称和完整函数定义，如下例所示：
+在 ES6 之前，为对象字面量定义方法时，需要指定名称和完整函数定义：
 
 ```js
 let server = {
@@ -92,8 +92,6 @@ let server = {
 
 ES6 通过删除冒号 (:) 和 function 关键字，使对象字面量方法的语法更加简洁。
 
-The following example rewrites the `server` object above using the ES6 syntax.
-
 ```js
 let server = {
 	name: "Server",
@@ -103,7 +101,7 @@ let server = {
 };
 ```
 
-这种简写语法也称为简洁方法语法。属性名称中包含空格是有效的。例如：
+这种简写语法也称为简洁方法语法。属性名称中包含空格是有效的。
 
 ```js
 let server = {

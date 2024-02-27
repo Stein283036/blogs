@@ -31,7 +31,7 @@ try {
 }
 ```
 
-如果 try 块中发生错误，JavaScript 引擎会立即执行 catch 块中的代码。此外，JavaScript 引擎错误对象传递给了 catch 块的参数，其中包含有关错误的详细信息。
+如果 try 块中发生错误，JavaScript 引擎会立即执行 catch 块中的代码。此外，JavaScript 引擎将错误对象传递给了 catch 块的参数，其中包含有关错误的详细信息。
 
 基本上，error 对象至少有两个属性：
 

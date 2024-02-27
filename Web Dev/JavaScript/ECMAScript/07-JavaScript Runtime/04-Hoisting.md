@@ -9,9 +9,11 @@
 
 在 **Creation Phase**，JavaScript 引擎将变量和函数声明移动到代码的顶部。这在 JavaScript 中称为提升。
 
+函数和变量相比，会被优先提升。这意味着函数会被提升到更靠前的位置。
+
 ## Variable hoisting
 
-Variable hoisting means the JavaScript engine moves the variable declarations to the top of the script. For example, the following example declares the counter variable and initialize its value to 1:
+Variable hoisting means the JavaScript engine moves the variable declarations to the top of the script.
 
 ```js
 console.log(counter); // 👉 undefined
@@ -48,7 +50,7 @@ JavaScript 发出以下错误：
 
 The error message explains that the `counter` variable is already in the heap memory. However, it hasn’t been initialized.
 
-Behind the scenes, the JavaScript engine **hoists** the variable declarations that use the `let` keyword. However, it doesn’t initialize the `let` variables.
+Behind the scenes, the JavaScript engine **hoists** the variable declarations that use the `let` keyword. However, it doesn’t initialize the `let` variables with `undefined` value.
 
 Notice that if you access a variable that doesn’t exist, the JavaScript will throw a different error:
 
@@ -60,7 +62,7 @@ let counter = 1;
 
 ## Function hoisting
 
-Like variables, the JavaScript engine also hoists the function declarations. This means that the JavaScript engine also moves the function declarations to the top of the script. For example:
+Like variables, the JavaScript engine also hoists the function declarations. This means that the JavaScript engine also moves the function declarations to the top of the script.
 
 ```js
 let x = 20,
@@ -126,22 +128,6 @@ console.log(result);
 var add = (x, y) => x + y; 
 ```
 
-这里使用 var 声明变量 add，该代码发出与函数表达式示例相同的错误，因为箭头函数是定义函数表达式的语法糖。
+这里使用 var 声明变量 add，变量 add 会被初始化为 `undefined`，该代码发出与函数表达式示例相同的错误，因为箭头函数是定义函数表达式的语法糖。
 
 与函数表达式类似，箭头函数不会提升。
-
-## Class hoisting
-
-### Class declaration
-
-```js
-let instance = new MyClass(); // 正常执行
-class MyClass {}
-```
-
-### Class expression
-
-```js
-let instance = new MyClass(); // 抛出错误：TypeError: MyClass is not a constructor
-var MyClass = class {};
-```

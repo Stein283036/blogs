@@ -54,7 +54,7 @@ When the JavaScript engine executes a script for the first time, it creates the 
 
 在示例中，函数执行上下文创建引用传递到函数中的所有参数的 arguments 对象，将 this 值设置为全局对象（严格模式下 this 值是 undefined），并将 a 参数初始化为 undefined。
 
-在函数执行上下文的执行阶段，JavaScript引擎将10赋值给参数a，并将结果（100）返回给全局执行上下文：
+在函数执行上下文的执行阶段，JavaScript 引擎将10 赋值给参数 a，并将结果（100）返回给全局执行上下文：
 
 ![javascript execution context - function execution context in execution phase](https://www.javascripttutorial.net/wp-content/uploads/2019/12/javascript-execution-context-function-execution-context-in-execution-phase.png)
 

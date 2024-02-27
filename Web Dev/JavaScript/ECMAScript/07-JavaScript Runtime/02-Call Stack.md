@@ -11,7 +11,7 @@
 
 调用堆栈基于后进先出 (LIFO) 原则工作。
 
-当您执行脚本时，JavaScript 引擎会创建一个全局执行上下文并将其推送到调用堆栈的顶部。
+执行脚本时，JavaScript 引擎会创建一个全局执行上下文并将其推送到调用堆栈的顶部。
 
 每当调用函数时，JavaScript 引擎都会为该函数创建一个函数执行上下文，将其推送到调用堆栈顶部，然后开始执行该函数。
 
@@ -41,13 +41,13 @@ let x = average(10, 20);
 
 全局执行上下文进入创建阶段并移动到执行阶段。
 
-JavaScript 引擎执行对average(10, 20) 函数的调用，并为average() 函数创建一个函数执行上下文，并将其推送到调用堆栈的顶部：
+JavaScript 引擎执行对 average(10, 20) 函数的调用，并为 average() 函数创建一个函数执行上下文，并将其推送到调用堆栈的顶部：
 
 ![JavaScript Call Stack - step 2](https://www.javascripttutorial.net/wp-content/uploads/2019/12/JavaScript-Call-Stack-step-2.png)
 
-JavaScript 引擎开始执行average()，因为average() 函数位于调用堆栈的顶部。
+JavaScript 引擎开始执行 average()，因为 average() 函数位于调用堆栈的顶部。
 
-Average() 函数调用 add() 函数。此时，JavaScript 引擎为 add() 函数创建另一个函数执行上下文，并将其放置在调用堆栈的顶部：
+average() 函数调用 add() 函数。此时，JavaScript 引擎为 add() 函数创建另一个函数执行上下文，并将其放置在调用堆栈的顶部：
 
 ![JavaScript Call Stack - step 3](https://www.javascripttutorial.net/wp-content/uploads/2019/12/JavaScript-Call-Stack-step-3.png)
 
@@ -55,7 +55,7 @@ JavaScript 引擎执行 add() 函数并将其从调用堆栈中弹出：
 
 ![JavaScript Call Stack - step 4](https://www.javascripttutorial.net/wp-content/uploads/2019/12/JavaScript-Call-Stack-step-4.png)
 
-此时，average()函数位于调用堆栈的顶部，JavaScript引擎执行并将其从调用堆栈中弹出。
+此时，average() 函数位于调用堆栈的顶部，JavaScript 引擎执行并将其从调用堆栈中弹出。
 
 ![JavaScript Call Stack - step 5](https://www.javascripttutorial.net/wp-content/uploads/2019/12/JavaScript-Call-Stack-step-5.png)
 

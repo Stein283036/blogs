@@ -4,6 +4,8 @@
 
 对象是键/值对或属性的集合。当值是函数时，属性就变成方法。通常，使用方法来描述对象的行为。
 
+作为对象属性的函数被称为 **方法（method）**。
+
 例如，以下代码将 greet 方法添加到 person 对象中：
 
 ```js
@@ -19,7 +21,7 @@ person.greet = function () {
 person.greet(); // Hello!
 ```
 
-除了使用函数表达式之外，您还可以定义一个函数并将其分配给一个对象，如下所示：
+除了使用函数表达式之外，还可以定义一个函数并将其分配给一个对象，如下所示：
 
 ```js
 let person = {
@@ -60,13 +62,14 @@ let person = {
         console.log('Hello, World!');
     }
 };
-
 person.greet();
 ```
 
 ### The this value
 
 通常，方法需要访问对象的其他属性。
+
+`this` 的值就是调用该方法的对象。
 
 在方法内部，this 值引用调用该方法的对象。因此，可以使用 this 值访问属性，如下所示：
 
@@ -87,22 +90,3 @@ let person = {
 };
 console.log(person.getFullName()); // 'John Doe'
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

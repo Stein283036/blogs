@@ -1,6 +1,6 @@
 # JavaScript Generators
 
-在 JavaScript 中，常规函数是基于运行到完成（run-to-completion）模型执行的。它不能中途暂停然后从暂停的地方继续。例如：
+在 JavaScript 中，常规函数是基于运行到完成（run-to-completion）模型执行的。它不能中途暂停然后从暂停的地方继续。
 
 ```js
 function foo() {
@@ -14,7 +14,7 @@ foo() 函数从上到下执行。退出 foo() 的唯一方法是返回或抛出�
 
 ES6 引入了一种与常规函数不同的新函数：函数生成器或生成器（function generator or generator）。
 
-generator 可以中途暂停，然后从暂停处继续。例如：
+generator 可以中途暂停，然后从暂停处继续。
 
 ```js
 function* generate() {

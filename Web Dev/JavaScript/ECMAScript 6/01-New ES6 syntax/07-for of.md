@@ -2,7 +2,7 @@
 
 ## Introduction to the JavaScript for…of loop
 
-ES6 引入了一个新的语句 for...of 来迭代可迭代对象，例如：
+ES6 引入了一个新的语句 for...of 来迭代可迭代对象：
 
 - Built-in Array, String, Map, Set, …
 - Array-like objects such as arguments or NodeList
@@ -29,7 +29,7 @@ for (let score of scores) {
 }
 ```
 
-如果不更改循环内的变量，则应使用 const 关键字而不是 let 关键字，如下所示：
+如果不更改循环内的变量，则应使用 const 关键字而不是 let 关键字：
 
 ```js
 let scores = [80, 90, 70];
@@ -41,7 +41,7 @@ for (const score of scores) {
 
 要访问循环内数组元素的索引，可以将 for...of 语句与数组的 entries() 方法结合使用。
 
-array.entries() 方法在每次迭代中返回一对 [index, element]。例如：
+array.entries() 方法在每次迭代中返回一对 [index, element]。
 
 ```js
 let colors = ['Red', 'Green', 'Blue'];
@@ -51,7 +51,7 @@ for (const [index, color] of colors.entries()) {
 }
 ```
 
-在此示例中，使用了数组解构将 entries() 方法的结果分配给每次迭代中的 index 和 color 变量：
+在此示例中，使用了数组解构将 entries() 方法的结果分配给每次迭代中的 index 和 color 变量。
 
 ### In-place object destructuring with for…of
 

@@ -54,7 +54,7 @@ let greeting = factory(class {
 greeting.sayHi(); // 'Hi'
 ```
 
-首先，定义一个factory()函数，它将类表达式作为参数并返回类的实例：
+首先，定义一个 factory() 函数，它将类表达式作为参数并返回类的实例：
 
 ```js
 function factory(aClass) {

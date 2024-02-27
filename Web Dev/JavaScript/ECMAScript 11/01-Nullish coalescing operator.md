@@ -1,5 +1,16 @@
 ## Nullish Coalescing Operator
 
+纵观 JavaScript 发展史，或 `||` 运算符先于 `??` 出现。它自 JavaScript 诞生就存在了，因此开发者长期将其用于这种目的。
+
+另一方面，空值合并运算符 `??` 是最近才被添加到 JavaScript 中的，它的出现是因为人们对 `||` 不太满意。
+
+它们之间重要的区别是：
+
+- `||` 返回第一个 **真** 值。
+- `??` 返回第一个 **已定义的** 值。
+
+换句话说，`||` 无法区分 `false`、`0`、空字符串 `""` 和 `null/undefined`。它们都一样 —— 假值（falsy values）。
+
 ### Introduction to the JavaScript nullish coalescing operator
 
 ES2020 引入了用双问号 (??) 表示的空合并运算符。空合并运算符是一个接受两个值的逻辑运算符：

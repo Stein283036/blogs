@@ -2,7 +2,7 @@
 
 ## Introduction to the JavaScript `apply()` method
 
-Function.prototype.apply() 方法允许使用给定的 this 值和以数组形式提供的参数来调用函数。以下是 apply() 方法的语法：
+Function.prototype.apply() 方法允许使用给定的 this 值和以数组形式提供的参数来调用函数。
 
 ```js
 fn.apply(thisArg, [args]);

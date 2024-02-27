@@ -2,7 +2,7 @@
 
 ## The `for` loop issues
 
-当有数据数组时，通常使用 for 循环来迭代其元素。例如：
+当有数据数组时，通常使用 for 循环来迭代其元素。
 
 ```js
 let ranks = ['A', 'B', 'C'];
@@ -84,17 +84,15 @@ class Sequence {
         this.interval = interval;
     }
     [Symbol.iterator]() {
-        let counter = 0;
         let nextIndex = this.start;
         return  {
             next: () => {
                 if ( nextIndex <= this.end ) {
-                    let result = { value: nextIndex,  done: false }
+                    let result = { value: nextIndex,  done: false };
                     nextIndex += this.interval;
-                    counter++;
                     return result;
                 }
-                return { value: counter, done: true };
+                return { value: undefined, done: true };
             }
         }
     }
@@ -184,3 +182,16 @@ for (const num of oddNumbers) {
 7
 cleaning up...
 ```
+
+## iterable and array-like
+
+这两个官方术语看起来差不多，但其实大不相同。请确保你能够充分理解它们的含义，以免造成混淆。
+
+- **Iterable** 如上所述，是实现了 `Symbol.iterator` 方法的对象。
+- **Array-like** 是有索引和 `length` 属性的对象，所以它们看起来很像数组。
+
+当我们将 JavaScript 用于编写在浏览器或任何其他环境中的实际任务时，我们可能会遇到可迭代对象或类数组对象，或两者兼有。
+
+例如，字符串即是可迭代的（`for..of` 对它们有效），又是类数组的（它们有数值索引和 `length` 属性）。
+
+但是一个可迭代对象也许不是类数组对象。反之亦然，类数组对象可能不可迭代。

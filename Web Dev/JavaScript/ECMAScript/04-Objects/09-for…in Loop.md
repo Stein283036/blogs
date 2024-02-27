@@ -25,15 +25,15 @@ for(const propertyName in object) {
 }
 ```
 
-for...in 允许访问对象的每个可迭代属性和值，而无需知道属性的具体名称。例如：
+for...in 允许访问对象的每个可迭代属性和值，而无需知道属性的具体名称。
 
 ```js
-var person = {
+let person = {
     firstName: 'John',
     lastName: 'Doe',
     ssn: '299-24-2351'
 };
-for(var prop in person) {
+for(const prop in person) {
     console.log(prop + ':' + person[prop]);
 }
 firstName:John
@@ -43,7 +43,7 @@ ssn:299-24-2351
 
 ## The `for...in` loop & Inheritance
 
-When you loop over the properties of an object that inherits from another object, the `for...in` statement goes up in the prototype chain and enumerates inherited properties. Consider the following example:
+When you loop over the properties of an object that inherits from another object, the `for...in` statement goes up in the prototype chain and enumerates inherited properties.
 
 ```js
 var decoration = {
@@ -97,6 +97,7 @@ Array.prototype.foo = 100;
 ```js
 // somewhere else
 Array.prototype.foo = 100;
+
 const items = [10, 20, 30];
 let total = 0;
 for (var prop in items) {
@@ -134,38 +135,3 @@ for (const key in arr) {
 }
 // 3
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

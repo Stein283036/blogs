@@ -1,5 +1,42 @@
 # The Ultimate Guide to JavaScript Symbol
 
+根据规范，只有两种原始类型可以用作对象属性键：
+
+- 字符串类型
+- symbol 类型
+
+否则，如果使用另一种类型，例如数字，它会被自动转换为字符串。所以 `obj[1]` 与 `obj["1"]` 相同，而 `obj[true]` 与 `obj["true"]` 相同。
+
+symbol 属性不参与 `for..in` 循环。
+
+```javascript
+let id = Symbol("id");
+let user = {
+  name: "John",
+  age: 30,
+  [id]: 123
+};
+
+for (let key in user) alert(key); // name, age（没有 symbol）
+
+alert("Direct: " + user[id]); // Direct: 123
+```
+
+Object.keys(user) 也会忽略它们。这是一般“隐藏符号属性”原则的一部分。如果另一个脚本或库遍历我们的对象，它不会意外地访问到符号属性。
+
+相反，Object.assign 会同时复制字符串和 symbol 属性：
+
+```js
+let id = Symbol("id");
+let user = {
+  [id]: 123
+};
+
+let clone = Object.assign({}, user);
+
+alert( clone[id] ); // 123
+```
+
 ## Creating symbols
 
 ES6 添加了 Symbol 作为新的原始类型。与其他基本类型（例如 number、boolean、null、undefined 和 string）不同，symbol 类型没有字面量形式。
@@ -63,7 +100,7 @@ To get the key associated with a symbol, you use the `Symbol.keyFor()` method as
 console.log(Symbol.keyFor(citizenID)); // 'ssn'
 ```
 
-If a symbol does not exist in the global symbol registry, the `System.keyFor()` method returns `undefined`.
+If a symbol does not exist in the global symbol registry, the `Symbol.keyFor()` method returns `undefined`.
 
 ```js
 let systemID = Symbol('sys');
@@ -123,6 +160,16 @@ console.log(Object.getOwnPropertySymbols(task)); // [Symbol(status)]
 
 The `Object.getOwnPropertySymbols()` method returns an array of own property symbols from an object.
 
+symbol 有两个主要的使用场景：
+
+1. “隐藏” 对象属性。
+
+   如果我们想要向“属于”另一个脚本或者库的对象添加一个属性，我们可以创建一个 symbol 并使用它作为属性的键。symbol 属性不会出现在 `for..in` 中，因此它不会意外地被与其他属性一起处理。并且，它不会被直接访问，因为另一个脚本没有我们的 symbol。因此，该属性将受到保护，防止被意外使用或重写。
+
+   因此我们可以使用 symbol 属性“秘密地”将一些东西隐藏到我们需要的对象中，但其他地方看不到它。
+
+2. JavaScript 使用了许多系统 symbol，这些 symbol 可以作为 `Symbol.*` 访问。我们可以使用它们来改变一些内建行为。例如，我们将使用 `Symbol.iterator` 来进行 迭代 操作，使用 `Symbol.toPrimitive` 来设置 对象原始值的转换 等等
+
 ## Well-known symbols
 
 ES6 provides predefined symbols which are called well-known symbols. The well-known symbols represent the common behaviors in JavaScript. Each well-known symbol is a static property of the `Symbol` object.
@@ -141,7 +188,7 @@ JavaScript will call the `Symbol.hasIntance` method as follows:
 type[Symbol.hasInstance](obj);
 ```
 
-It then depends on the method to determine if `obj` is an instance of the `type` object. See the following example.
+It then depends on the method to determine if `obj` is an instance of the `type` object.
 
 ```js
 class Stack {
@@ -270,7 +317,7 @@ let list = {
     length: 2
 };
 let message = ['Learning'].concat(list);
-console.log(message); // ["Learning", Object]
+console.log(message); // [ 'Learning', { '0': 'JavaScript', '1': 'Symbol', length: 2 } ]
 ```
 
 The list object is concatenated to the `['Learning']` array. However, its individual elements are not spreaded.

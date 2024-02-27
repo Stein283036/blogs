@@ -28,7 +28,7 @@ show();
 
 ## Using anonymous functions as arguments
 
-在实践中，经常将匿名函数作为参数传递给其他函数。例如：
+在实践中，经常将匿名函数作为参数传递给其他函数。
 
 ```js
 setTimeout(function() {
@@ -84,22 +84,3 @@ let person = {
 ## Arrow functions
 
 ES6 引入了箭头函数表达式，为声明匿名函数提供了简写。
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
